@@ -46,6 +46,8 @@ As I intend for the obstacles to be somewhat randomly generated, the clear metho
 
 Started new project 
 
+Started again from scratch. Drawing the image [https://spicyyoghurt.com/tutorials/html5-javascript-game-development/images-and-sprite-animations][https://spicyyoghurt.com/tutorials/html5-javascript-game-development/setup-html5-canvas-game] 
+
 # To do List 
 ## Good
 * "How to Play" div

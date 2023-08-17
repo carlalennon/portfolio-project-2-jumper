@@ -1,0 +1,1 @@
+let playerSprite = document.getElementById("sprite");
