@@ -1,13 +1,13 @@
 
 // set up Canvas 
 
-var player;
+var myGamePiece;
 
 function startGame(){
     myGameArea.start();
 
     //placeholder for player sprite
-    player = new component(30,30,"red",10,120);
+    myGamePiece = new component(30,30,"red",10,120);
 
 }
 
@@ -18,9 +18,11 @@ function component(width, height, color, x, y) {
     this.height = height;
     this.x = x;
     this.y = y;
+    this.update = function(){
     ctx = myGameArea.context;
     ctx.fillStyle - color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
 }
 
 // Add frames to game 50fps
@@ -40,6 +42,13 @@ var  myGameArea = {
     clear : function() {
         this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
     }
+}
+
+// Update function. Sets and clears game area 50fps
+
+function updateGameArea() {
+    myGameArea.clear();
+    myGamePiece.update();
 }
 
 // Setting up the canvas to have context and be drawn on 
