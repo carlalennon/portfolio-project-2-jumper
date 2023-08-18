@@ -56,6 +56,12 @@ Note for sprite animation: JS can silce and play sprites like Unity : [https://s
 The canvas is alway drawn from the upper left corner, and the positional co ords are relative to this. +x +y only
 
 Project got easier after initial reading on canvases, as adding player controlis largely the same as unsing the c# unity intergraitions, whoch I leanred before for a pixel art job for a client 
+
+Relied heavily on the Web3 schools documentation on JS games to learn about canvas + component building [https://www.w3schools.com/graphics/game_controllers.asp] this isn't the right link
+
+Keydown events from Unity [https://docs.unity3d.com/ScriptReference/KeyCode.DownArrow.html][https://www.tutorialspoint.com/detecting-arrow-key-presses-in-javascript#:~:text=onkeydown%20JavaScript%20event%20handler%20by%20passing%20arrow%20key%20unique%20codes.&text=When%20the%20script%20executed%2C%20it,an%20alert%20%E2%80%9Cdown%20key%E2%80%9D.][https://www.w3schools.com/jsref/event_onkeypress.asp``]
+
+Web3Schools recommends .keyCode method, but this is deprecated. The more suitable method is .key 
 #
 # To do List 
 ## Good
@@ -65,6 +71,7 @@ Project got easier after initial reading on canvases, as adding player controlis
 ## Best
 * Add tab icon in HTML header
 * Add more social media cards to header
+* Add touch screen control [https://www.w3schools.com/graphics/game_controllers.asp]
 
 
 Sources:
