@@ -16,12 +16,19 @@ function startGame(){
 function component(width, height, color, x, y) {
     this.width = width;
     this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;
     this.x = x;
     this.y = y;
     this.update = function(){
     ctx = myGameArea.context;
     ctx.fillStyle - color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+    //movement 
+    this.newPos = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;
     }
 }
 
@@ -32,8 +39,9 @@ var  myGameArea = {
     canvas : document.createElement("canvas"),
 
     start : function() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
+        // Change canvas size to window width after testing 
+        this.canvas.width = 400;
+        this.canvas.height = 400;
 
         this.context = this.canvas.getContext("2d");
         this.body.insertBefore(this.canvas, document.body.childNodes[0]);
@@ -48,7 +56,26 @@ var  myGameArea = {
 
 function updateGameArea() {
     myGameArea.clear();
+    myGamePiece.newPos();
     myGamePiece.update();
+}
+
+//Player movement control -- note the position of the player is changed using the x/y grid 
+
+function moveup() {
+    myGamePiece.speedY -= 1;
+}
+
+function movedown() {
+    myGamePiece.speedY += 1;
+}
+
+function moveleft() {
+    myGamePiece.speedX -= 1;
+}
+
+function moveright() {
+    myGamePiece.speedX += 1;
 }
 
 // Setting up the canvas to have context and be drawn on 

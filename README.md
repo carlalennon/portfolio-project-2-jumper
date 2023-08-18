@@ -53,10 +53,15 @@ Started again from scratch. Drawing the image [https://spicyyoghurt.com/tutorial
 
 Note for sprite animation: JS can silce and play sprites like Unity : [https://spicyyoghurt.com/tutorials/html5-javascript-game-development/images-and-sprite-animations]
 
+The canvas is alway drawn from the upper left corner, and the positional co ords are relative to this. +x +y only
+
+Project got easier after initial reading on canvases, as adding player controlis largely the same as unsing the c# unity intergraitions, whoch I leanred before for a pixel art job for a client 
+#
 # To do List 
 ## Good
 * "How to Play" div
 ## Better
+* Parallax BG
 ## Best
 * Add tab icon in HTML header
 * Add more social media cards to header
