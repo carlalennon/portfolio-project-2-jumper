@@ -18,7 +18,7 @@ var  myGameArea = {
     start : function() {
         // Change canvas size to window width after testing 
         this.canvas.width = 400;
-        this.canvas.height = 400;
+        this.canvas.height = 200;
 
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
@@ -45,7 +45,7 @@ function component(width, height, color, x, y) {
     this.y = y;
     this.update = function(){
     ctx = myGameArea.context;
-    ctx.fillStyle - color;
+    ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     //movement 
@@ -55,11 +55,6 @@ function component(width, height, color, x, y) {
     }
 }
 
-
-// Add frames to game 50fps
-
-
-
 // Update function. Sets and clears game area 50fps
 
 function updateGameArea() {
@@ -67,11 +62,17 @@ function updateGameArea() {
     myGamePiece.speedX=0;
     myGamePiece.speedY=0;
     //Adding arrow control 
-    if (myGameArea.key && myGameArea.key == 38) {myGamePiece.speedY=-1;};
-    if (myGameArea.key && myGameArea.key == 40) {myGamePiece.speedX=1};
+    if (myGameArea.key && myGameArea.key == 38) {myGamePiece.speedY=-1;}
+    if (myGameArea.key && myGameArea.key == 40) {myGamePiece.speedX=1; }
     myGamePiece.newPos();
     myGamePiece.update();
 }
+
+// Add frames to game 50fps
+
+
+
+
 
 //Player movement control -- note the position of the player is changed using the x/y grid 
 
