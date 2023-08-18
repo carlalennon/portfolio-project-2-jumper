@@ -1,5 +1,22 @@
 
+// set up Canvas 
 
+function startGame(){
+    myGameArea.start();
+}
+
+var  myGameArea = {
+    canvas : document.createElement("canvas"),
+
+    start : function() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+
+        this.context = this.canvas.getContext("2d");
+        this.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    }
+
+}
 // Setting up the canvas to have context and be drawn on 
 let canvas;
 let context;
@@ -9,6 +26,11 @@ context = canvas.getContext("2d");
 let playerSprite = document.getElementById("sprite");
 
 // Canvas height 1080
+
+
+// Add frames to game 
+
+
 
 window.onload = function() {
     //Page is now loaded 
