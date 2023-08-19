@@ -3,6 +3,8 @@
 
 var myGamePiece;
 
+
+
 function startGame(){
     myGameArea.start();
 
@@ -28,10 +30,15 @@ var  myGameArea = {
             myGameArea.key = e.key;
         })
     },
+
+    
+
     clear : function() {
         this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
     }
 }
+
+// Experiment time 
 
 
 // Give the player object context so it knows what it is 
@@ -47,12 +54,33 @@ function component(width, height, color, x, y) {
     ctx = myGameArea.context;
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.move();
+
+    document.addEventListener("keydown", this.keydown);
+    document.addEventListener("keyup", this.keyup);
     }
     //movement 
     this.newPos = function() {
         this.x += this.speedX;
         this.y += this.speedY;
     }
+
+   keydown =(e)=>{
+        if (e.code === "ArrowUp"){
+            this.upPressed =true;
+        }
+   }
+   keyup =(e)=>{
+        if (e.code === "ArrowUp"){
+            this.upPressed =false;
+        }
+   }
+
+   move() {
+    if (this.upPressed) {
+        this.y += this.speedY;
+    }
+   }
 }
 
 // Update function. Sets and clears game area 50fps
@@ -62,11 +90,21 @@ function updateGameArea() {
     myGamePiece.speedX=0;
     myGamePiece.speedY=0;
     //Adding arrow control 
-    if (myGameArea.key && myGameArea.key == 38) {myGamePiece.speedY=-1;}
-    if (myGameArea.key && myGameArea.key == 40) {myGamePiece.speedX=1; }
     myGamePiece.newPos();
     myGamePiece.update();
 }
+
+function moveLeft() {
+    myGamePiece.x += 1;
+}
+function moveup() {
+    myGamePiece.speedY -= 1;
+}
+
+function movedown() {
+    myGamePiece.speedY += 1;
+}
+
 
 // Add frames to game 50fps
 
@@ -75,14 +113,6 @@ function updateGameArea() {
 
 
 //Player movement control -- note the position of the player is changed using the x/y grid 
-
-function moveup() {
-    myGamePiece.speedY -= 1;
-}
-
-function movedown() {
-    myGamePiece.speedY += 1;
-}
 
 // when player is ducking, his height needs to be half and a new sprite needs to be drawn
 
