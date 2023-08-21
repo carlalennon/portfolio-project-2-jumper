@@ -1,7 +1,13 @@
 
 // set up Canvas 
 
-var myGamePiece;
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+// overrides default canvas w/h
+canvas.width = 800;
+canvas.height= 400;
+
 
 
 
@@ -14,8 +20,7 @@ function startGame(){
 }
 
 var  myGameArea = {
-    //Creates canvas element 
-    canvas : document.createElement("canvas"),
+
 
     start : function() {
         // Change canvas size to window width after testing 
