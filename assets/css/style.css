@@ -4,7 +4,10 @@
 }
 
 canvas {
-    width:80%;
-    height:80%;
+    background: red;
+    width:300;
+    height:150%;
     border: 3px solid red;
+    display:block;
+    margin: 0 auto;
 }

@@ -62,12 +62,21 @@ Relied heavily on the Web3 schools documentation on JS games to learn about canv
 Keydown events from Unity [https://docs.unity3d.com/ScriptReference/KeyCode.DownArrow.html][https://www.tutorialspoint.com/detecting-arrow-key-presses-in-javascript#:~:text=onkeydown%20JavaScript%20event%20handler%20by%20passing%20arrow%20key%20unique%20codes.&text=When%20the%20script%20executed%2C%20it,an%20alert%20%E2%80%9Cdown%20key%E2%80%9D.][https://www.w3schools.com/jsref/event_onkeypress.asp``]
 
 Web3Schools recommends .keyCode method, but this is deprecated. The more suitable method is .key 
+
+Right baout here is where the documentation for the type of jump I want in my game isn't inthe documentation, so I have to experiment
+
+Looked into managing bitmap scaling re responsivness, added constant w/h 
+
+[https://www.javascripttutorial.net/javascript-dom/javascript-keyboard-events/]
 #
 # To do List 
 ## Good
 * "How to Play" div
+* Use scaleRatio to make things scalable
+
 ## Better
 * Parallax BG
+* Some osrt of time flooring/delta time (24fps)
 ## Best
 * Add tab icon in HTML header
 * Add more social media cards to header
