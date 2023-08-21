@@ -106,3 +106,5 @@ Trying switch cases instead of if else because need multiple button controls
 Collision is working BUT collision box is from top of player's head 
 
 Approaching physics like in previous games. JS does not have inbuilt gravity/velocity like I thought.
+
+Passing the player jump function into the up arrow case [https://cmorinan.medium.com/passing-functions-as-arguments-in-javascript-tips-and-pitfalls-d29bbd4522a9]
