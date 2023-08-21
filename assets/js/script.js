@@ -9,7 +9,7 @@ const playerSpr = document.getElementById("sprite");
 const playerWidth = 50;
 const playerHeight = 100;
 let playerX = 10;
-let playerY;
+let playerY = 80;
 
 // overrides default canvas w/h
 canvas.width = 400;
@@ -19,6 +19,7 @@ function drawPlayer() {
 // placeholder player
 ctx.drawImage(playerSpr, playerX, playerY, playerWidth, playerHeight);
 }
+
 
 function drawFloor() {
 // Draw floor line 
@@ -41,7 +42,7 @@ function intervalLoop() {
     drawFloor();
     console.log("Loop running");
 }
-setInterval(intervalLoop, 15);
+setInterval(intervalLoop, 40);
 
 
 
