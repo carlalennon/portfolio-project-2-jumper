@@ -18,18 +18,18 @@ canvas.height= 200;
 function drawPlayer() {
 // placeholder player
 ctx.drawImage(playerSpr, playerX, playerY, playerWidth, playerHeight);
-playerX +=1;
-playerY +=1;
 }
 
-
-
-
+function drawFloor() {
 // Draw floor line 
 ctx.beginPath();
 ctx.moveTo(0, 160);
 ctx.lineTo(canvas.width, 160);
 ctx.stroke();
+}
+
+
+
 
 
 // "loop", interval, frames 
@@ -38,6 +38,7 @@ function intervalLoop() {
     //clear old drawings of player 
     ctx.clearRect(0,0,canvas.width, canvas.height);
     drawPlayer();
+    drawFloor();
     console.log("Loop running");
 }
 setInterval(intervalLoop, 15);
