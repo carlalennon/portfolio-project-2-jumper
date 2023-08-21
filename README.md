@@ -68,6 +68,8 @@ Right baout here is where the documentation for the type of jump I want in my ga
 Looked into managing bitmap scaling re responsivness, added constant w/h 
 
 [https://www.javascripttutorial.net/javascript-dom/javascript-keyboard-events/]
+
+[https://www.w3schools.com/jsref/canvas_drawimage.asp#:~:text=The%20drawImage()%20method%20draws,increase%2Freduce%20the%20image%20size.]
 #
 # To do List 
 ## Good

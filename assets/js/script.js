@@ -5,18 +5,18 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 //Set up player, variable are passed into the draw method below for scaling 
-const playerWidth = 100;
-const playerHeight = 200;
+const playerSpr = document.getElementById("sprite");
+const playerWidth = 50;
+const playerHeight = 100;
 
 // overrides default canvas w/h
-canvas.width = 800;
-canvas.height= 400;
+canvas.width = 400;
+canvas.height= 200;
 
 // placeholder player
-ctx.fillRect(0, 0, 100, 100);
-ctx.fillStyle = "red";
+ctx.drawImage(playerSpr, 10, 80, playerWidth, playerHeight);
 
-
+console.log("JS is working");
 // function startGame(){
 //     myGameArea.start();
 
