@@ -10,6 +10,13 @@ const playerWidth = 50;
 const playerHeight = 100;
 let playerX = 10;
 let playerY = 80;
+let playerPositionY = playerY;
+
+document.addEventListener("keydown", playerJump);
+
+function playerJump(e) {
+    console.log(e);
+}
 
 // overrides default canvas w/h
 canvas.width = 400;
@@ -17,7 +24,14 @@ canvas.height= 200;
 
 function drawPlayer() {
 // placeholder player
-ctx.drawImage(playerSpr, playerX, playerY, playerWidth, playerHeight);
+ctx.drawImage(
+    
+    playerSpr, //img
+    playerX, //x co-ord
+    playerPositionY,  //y co-ord
+    playerWidth, 
+    playerHeight
+    );
 }
 
 
