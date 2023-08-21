@@ -100,3 +100,7 @@ Game interval  : [https://codeincomplete.com/articles/javascript-game-foundation
 Player's x and y co-ords are declared with "let" instead of "const" as I haven't made my mindup about the amount the player will be able to move him yet 
 
 Player and line are no longer drawn on canvas. For player I suspect the file is too big to load between frames. Possible fix: vector graphic. For line no idea why it disappeared
+
+Trying switch cases instead of if else because need multiple button controls 
+
+Collision is working BUT collision box is from top of player's head 

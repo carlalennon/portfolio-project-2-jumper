@@ -15,7 +15,7 @@ const playerHeight = 100;
 let playerX = 10;
 let playerY = 80;
 let playerPositionY = playerY;
-let positionFloor = 180;
+let positionFloor = 179 - playerHeight;
 
 document.addEventListener("keydown", playerJump);
 
@@ -54,8 +54,8 @@ ctx.drawImage(
 function drawFloor() {
 // Draw floor line 
 ctx.beginPath();
-ctx.moveTo(0, positionFloor);
-ctx.lineTo(canvas.width, positionFloor);
+ctx.moveTo(0, 180);
+ctx.lineTo(canvas.width, 180);
 ctx.stroke();
 }
 
