@@ -104,3 +104,5 @@ Player and line are no longer drawn on canvas. For player I suspect the file is 
 Trying switch cases instead of if else because need multiple button controls 
 
 Collision is working BUT collision box is from top of player's head 
+
+Approaching physics like in previous games. JS does not have inbuilt gravity/velocity like I thought.
