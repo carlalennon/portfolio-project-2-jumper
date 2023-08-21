@@ -59,6 +59,13 @@ ctx.drawImage(
     playerWidth, 
     playerHeight
     );
+
+    // Add floor collision to player 
+
+    if (playerPositionY > positionFloor){
+        velocity = 0;
+        acceleration = 0;
+    }
 }
 
 
@@ -81,7 +88,6 @@ function intervalLoop() {
     drawPlayer();
     drawFloor();
     collision();
-    //gravity(); 
 }
 setInterval(intervalLoop, 40);
 
@@ -102,10 +108,6 @@ function collision() {
 }
 
 // Gravity loop 
-function gravity() 
-{
-    
-}
 
 
 // function startGame(){
