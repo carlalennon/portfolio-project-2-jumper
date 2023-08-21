@@ -17,12 +17,13 @@ let playerY = 80;
 
 
 //Collision
-let playerPositionY = 50; 
+let playerPositionY = 30; 
 let positionFloor = 179 - playerHeight;
+let playerOnGround;
 
 // Physics 
-var velocity = 1;
-var acceleration = 1; 
+let velocity = 0;
+var acceleration = .5; 
 
 
 document.addEventListener("keydown", playerJump);
@@ -31,7 +32,7 @@ document.addEventListener("keydown", playerJump);
 function playerJump(e) {
     switch(e.code) {
         case "ArrowUp":
-        playerJumpAnimation();
+        playerPositionY -= 10;
         break;
 
         case "ArrowDown":
@@ -48,6 +49,8 @@ function playerJump(e) {
 
 function drawPlayer() {
 // placeholder player
+playerPositionY = playerPositionY + velocity;
+velocity = velocity + acceleration;
 ctx.drawImage(
     
     playerSpr, //img
@@ -77,10 +80,8 @@ function intervalLoop() {
     ctx.clearRect(0,0,canvas.width, canvas.height);
     drawPlayer();
     drawFloor();
-    console.log("Loop running");
     collision();
-    gravity();
-    acceleration ++; 
+    //gravity(); 
 }
 setInterval(intervalLoop, 40);
 
@@ -101,16 +102,10 @@ function collision() {
 }
 
 // Gravity loop 
-function gravity() {
-if (playerPositionY > positionFloor) {
-    playerPositionY = playerPositionY + velocity*acceleration;
-
+function gravity() 
+{
+    
 }
-else {
-    playerPositionY = playerPositionY;
-}
-}
-
 
 
 // function startGame(){
@@ -230,9 +225,3 @@ else {
 
 
 // // Canvas height 1080
-
-
-
-
-
-
