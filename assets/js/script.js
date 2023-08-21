@@ -4,6 +4,10 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+// overrides default canvas w/h
+canvas.width = 400;
+canvas.height= 200;
+
 //Set up player, variable are passed into the draw method below for scaling 
 const playerSpr = document.getElementById("sprite");
 const playerWidth = 50;
@@ -11,9 +15,11 @@ const playerHeight = 100;
 let playerX = 10;
 let playerY = 80;
 let playerPositionY = playerY;
+let positionFloor = 180;
 
 document.addEventListener("keydown", playerJump);
 
+// button controls
 function playerJump(e) {
     switch(e.code) {
         case "ArrowUp":
@@ -27,9 +33,10 @@ function playerJump(e) {
 
 }
 
-// overrides default canvas w/h
-canvas.width = 400;
-canvas.height= 200;
+// jump animation 
+ function playerJumpAnimation() {
+    playerPositionY
+ }
 
 function drawPlayer() {
 // placeholder player
@@ -47,8 +54,8 @@ ctx.drawImage(
 function drawFloor() {
 // Draw floor line 
 ctx.beginPath();
-ctx.moveTo(0, 160);
-ctx.lineTo(canvas.width, 160);
+ctx.moveTo(0, positionFloor);
+ctx.lineTo(canvas.width, positionFloor);
 ctx.stroke();
 }
 
@@ -64,11 +71,25 @@ function intervalLoop() {
     drawPlayer();
     drawFloor();
     console.log("Loop running");
+    collision();
 }
 setInterval(intervalLoop, 40);
 
 
+//Collision logic 
 
+function collision() {
+    // contact with ground 
+     if (playerPositionY > positionFloor) {
+        console.log("Player is on ground");
+     }
+
+     else {
+        console.log("Player is jump");
+     }
+    //contact with obstacle 
+
+}
 
 
 
