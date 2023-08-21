@@ -15,7 +15,16 @@ let playerPositionY = playerY;
 document.addEventListener("keydown", playerJump);
 
 function playerJump(e) {
-    console.log(e);
+    switch(e.code) {
+        case "ArrowUp":
+        playerPositionY -= 10;
+        break;
+
+        case "ArrowDown":
+            playerPositionY += 10;
+        break;
+    }
+
 }
 
 // overrides default canvas w/h
