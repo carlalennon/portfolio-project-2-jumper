@@ -8,6 +8,8 @@ const ctx = canvas.getContext("2d");
 const playerSpr = document.getElementById("sprite");
 const playerWidth = 50;
 const playerHeight = 100;
+let playerX = 10;
+let playerY;
 
 // overrides default canvas w/h
 canvas.width = 400;
@@ -15,7 +17,9 @@ canvas.height= 200;
 
 function drawPlayer() {
 // placeholder player
-ctx.drawImage(playerSpr, 10, 80, playerWidth, playerHeight);
+ctx.drawImage(playerSpr, playerX, playerY, playerWidth, playerHeight);
+playerX +=1;
+playerY +=1;
 }
 
 
@@ -31,7 +35,10 @@ ctx.stroke();
 // "loop", interval, frames 
 
 function intervalLoop() {
-drawPlayer();
+    //clear old drawings of player 
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+    drawPlayer();
+    console.log("Loop running");
 }
 setInterval(intervalLoop, 15);
 
