@@ -13,8 +13,12 @@ const playerHeight = 100;
 canvas.width = 400;
 canvas.height= 200;
 
+function drawPlayer() {
 // placeholder player
 ctx.drawImage(playerSpr, 10, 80, playerWidth, playerHeight);
+}
+
+
 
 
 // Draw floor line 
@@ -22,6 +26,22 @@ ctx.beginPath();
 ctx.moveTo(0, 160);
 ctx.lineTo(canvas.width, 160);
 ctx.stroke();
+
+
+// "loop", interval, frames 
+
+function intervalLoop() {
+drawPlayer();
+}
+setInterval(intervalLoop, 15);
+
+
+
+
+
+
+
+
 // function startGame(){
 //     myGameArea.start();
 

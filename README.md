@@ -92,3 +92,6 @@ Sources:
 [https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement]
 [https://www.w3schools.com/graphics/game_components.asp]
 [https://www.cozyroc.com/ssis/javascript-parameters#:~:text=JavaScript%20Task%20and%20JavaScript%20Component,of%20the%20task%2Fcomponent%20editor.]
+
+
+Game interval  : [https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/]
