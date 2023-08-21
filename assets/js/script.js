@@ -16,7 +16,12 @@ canvas.height= 200;
 // placeholder player
 ctx.drawImage(playerSpr, 10, 80, playerWidth, playerHeight);
 
-console.log("JS is working");
+
+// Draw floor line 
+ctx.beginPath();
+ctx.moveTo(0, 160);
+ctx.lineTo(canvas.width, 160);
+ctx.stroke();
 // function startGame(){
 //     myGameArea.start();
 
