@@ -26,13 +26,14 @@ let velocity = 0;
 var acceleration = .5; 
 
 
+
 document.addEventListener("keydown", playerJump);
 
 // button controls
 function playerJump(e) {
     switch(e.code) {
         case "ArrowUp":
-        playerPositionY -= 10;
+            playerPositionY -= 30;
         break;
 
         case "ArrowDown":
@@ -44,28 +45,37 @@ function playerJump(e) {
 
 // jump animation 
  function playerJumpAnimation() {
-
+   
+    velocity=0;
+    accelaration= -2; // Negative accel means go up 
+    console.log('Player jump');
  }
 
 function drawPlayer() {
-// placeholder player
-playerPositionY = playerPositionY + velocity;
-velocity = velocity + acceleration;
-ctx.drawImage(
-    
-    playerSpr, //img
-    playerX, //x co-ord
-    playerPositionY,  //y co-ord
-    playerWidth, 
-    playerHeight
-    );
+// placeholder playeret 
 
-    // Add floor collision to player 
+        playerPositionY = playerPositionY + velocity*speedY;
+        velocity = velocity + acceleration;
 
-    if (playerPositionY > positionFloor){
-        velocity = 0;
-        acceleration = 0;
-    }
+        this.transform = function() {
+            this.playerY += this.speedY;
+        }
+            ctx.drawImage(
+        
+            playerSpr, //img
+            playerX, //x co-ord
+            playerPositionY,  //y co-ord
+            playerWidth, 
+            playerHeight
+            );
+
+        // Add floor collision to player 
+        if (playerPositionY > positionFloor){
+            velocity = 0;
+            acceleration = 0;
+            playerY = positionFloor;
+        }
+
 }
 
 
