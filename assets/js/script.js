@@ -15,6 +15,12 @@ const playerHeight = 100;
 let playerX = 10;
 let playerY = 80;
 
+//Set up obstacle 
+const sprAmp = document.getElementById("obstacle-amp");
+const ampWidth = 50;
+const ampHeight = 50;
+let ampX = 200;
+let ampY = 130;
 
 //Collision
 let playerPositionY = 30; 
@@ -82,6 +88,16 @@ function drawPlayer() {
 
 }
 
+function drawObstacle() {
+    ctx.drawImage(
+            sprAmp,
+            ampX,
+            ampY,
+            ampWidth,
+            ampHeight
+    );
+}
+
 
 function drawFloor() {
 // Draw floor line 
@@ -108,6 +124,7 @@ function intervalLoop() {
     ctx.clearRect(0,0,canvas.width, canvas.height);
     drawPlayer();
     drawFloor();
+    drawObstacle();
 }
 setInterval(intervalLoop, 20);
 
