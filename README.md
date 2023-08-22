@@ -120,3 +120,10 @@ Note for tomorrow = start on speed
 [https://developer.ibm.com/tutorials/wa-build2dphysicsengine/] <== for physics equations>
 
 Delta time as used in C# projects
+
+JUMP WORKS!!!!
+
+
+Player lands under floor [https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Collision_detection]
+
+Fixed. Player position set to on ground on completeion of jump

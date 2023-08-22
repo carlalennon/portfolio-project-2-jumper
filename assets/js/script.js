@@ -49,7 +49,7 @@ function playerJump(e) {
     velocity = -10;
     acceleration = .5;
     playerPositionY = playerPositionY + velocity*acceleration;
-   
+    
   }
 
 function drawPlayer() {
@@ -69,7 +69,7 @@ function drawPlayer() {
             );
 
         // Add floor collision to player 
-        if (playerPositionY > positionFloor){
+        if (playerPositionY >= positionFloor){
             velocity = 0;
             acceleration = 0;
             playerY = positionFloor;
@@ -115,6 +115,7 @@ function collision() {
         console.log("Player is on ground");
         velocity = 0;
         acceleration = 0;
+        playerPositionY=positionFloor;
      }
 
      else {
