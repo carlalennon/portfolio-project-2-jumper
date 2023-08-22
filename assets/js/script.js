@@ -46,14 +46,19 @@ function playerJump(e) {
 
 // jump animation 
   function playerJump() {
+
+    if (playerOnGround === true) {
     velocity = -10;
     acceleration = .5;
     playerPositionY = playerPositionY + velocity*acceleration;
+    } else {
+        return;
+    }
     
   }
 
 function drawPlayer() {
-// placeholder playeret 
+// placeholder player
 
         playerPositionY = playerPositionY + velocity;
         velocity = velocity + acceleration;
@@ -116,9 +121,11 @@ function collision() {
         velocity = 0;
         acceleration = 0;
         playerPositionY=positionFloor;
+        playerOnGround =true;
      }
 
      else {
+        playerOnGround = false;
         console.log("Player is jump");
      }
     //contact with obstacle 

@@ -126,4 +126,11 @@ JUMP WORKS!!!!
 
 Player lands under floor [https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Collision_detection]
 
+
+Prevent player from double jump 
+
 Fixed. Player position set to on ground on completeion of jump
+
+JS file is getting messy. Make new class file for obstacles [https://bobbyhadz.com/blog/javascript-import-class-from-another-file][https://www.w3schools.com/js/js_classes.asp][https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_classes]
+
+obstacles need to be random, move twd player on x axis and drawn from file [https://www.w3schools.com/graphics/game_obstacles.asp]
