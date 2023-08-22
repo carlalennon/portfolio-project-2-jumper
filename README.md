@@ -94,7 +94,7 @@ Sources:
 [https://www.cozyroc.com/ssis/javascript-parameters#:~:text=JavaScript%20Task%20and%20JavaScript%20Component,of%20the%20task%2Fcomponent%20editor.]
 
 
-Game interval  : [https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/]
+Game interval  : [https://codeincomplete.com/articles/javascript-game-foundations-the-game-loop/] 
 
 
 Player's x and y co-ords are declared with "let" instead of "const" as I haven't made my mindup about the amount the player will be able to move him yet 
@@ -108,3 +108,15 @@ Collision is working BUT collision box is from top of player's head
 Approaching physics like in previous games. JS does not have inbuilt gravity/velocity like I thought.
 
 Passing the player jump function into the up arrow case [https://cmorinan.medium.com/passing-functions-as-arguments-in-javascript-tips-and-pitfalls-d29bbd4522a9]
+
+Using basic physics to add in velocity -- might be a weird way to calculate. Similar principles to "ease" in animation, get exponential change over time. Therefore, speed*acceleration = velcity 
+
+Change out the switch cases for separate functions, as I'm not sure about switch cases and functions
+
+For speedX/speedY [https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code]
+
+Note for tomorrow = start on speed 
+
+[https://developer.ibm.com/tutorials/wa-build2dphysicsengine/] <== for physics equations>
+
+Delta time as used in C# projects

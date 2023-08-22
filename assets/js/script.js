@@ -24,6 +24,7 @@ let playerOnGround;
 // Physics 
 let velocity = 0;
 var acceleration = .5; 
+let gravity = 9.8;
 
 
 
@@ -33,7 +34,7 @@ document.addEventListener("keydown", playerJump);
 function playerJump(e) {
     switch(e.code) {
         case "ArrowUp":
-            playerPositionY -= 30;
+            playerJump();
         break;
 
         case "ArrowDown":
@@ -44,22 +45,20 @@ function playerJump(e) {
 }
 
 // jump animation 
- function playerJumpAnimation() {
+  function playerJump() {
+    velocity = -10;
+    acceleration = .5;
+    playerPositionY = playerPositionY + velocity*acceleration;
    
-    velocity=0;
-    accelaration= -2; // Negative accel means go up 
-    console.log('Player jump');
- }
+  }
 
 function drawPlayer() {
 // placeholder playeret 
 
-        playerPositionY = playerPositionY + velocity*speedY;
+        playerPositionY = playerPositionY + velocity;
         velocity = velocity + acceleration;
 
-        this.transform = function() {
-            this.playerY += this.speedY;
-        }
+      
             ctx.drawImage(
         
             playerSpr, //img
@@ -93,21 +92,29 @@ ctx.stroke();
 
 // "loop", interval, frames 
 function intervalLoop() {
-    //clear old drawings of player 
+    //Interact
+
+    //Logic
+    collision();
+    //Physics Engine
+    
+    
+    //Render
     ctx.clearRect(0,0,canvas.width, canvas.height);
     drawPlayer();
     drawFloor();
-    collision();
 }
-setInterval(intervalLoop, 40);
+setInterval(intervalLoop, 20);
 
 
 //Collision logic 
 
 function collision() {
     // contact with ground 
-     if (playerPositionY > positionFloor) {
+     if (playerPositionY >= positionFloor) {
         console.log("Player is on ground");
+        velocity = 0;
+        acceleration = 0;
      }
 
      else {
@@ -117,123 +124,9 @@ function collision() {
 
 }
 
-// Gravity loop 
+// Physics
 
+// Position equation = p(n+1) = v*t + p(n)
+// where p=position(x,y), v=velocity, t=time(milliseconds, intervalLoop)
 
-// function startGame(){
-//     myGameArea.start();
-
-//     //placeholder for player sprite
-//     myGamePiece = new component(30,30,"red",10,120);
-
-// }
-
-// var  myGameArea = {
-
-
-//     start : function() {
-//         // Change canvas size to window width after testing 
-//         this.canvas.width = 400;
-//         this.canvas.height = 200;
-
-//         this.context = this.canvas.getContext("2d");
-//         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-
-//         this.interval = setInterval(updateGameArea, 20);
-//         window.addEventListener("keydown", function (e) {
-//             myGameArea.key = e.key;
-//         })
-//     },
-
-    
-
-//     clear : function() {
-//         this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
-//     }
-// }
-
-// // Experiment time 
-
-
-// // Give the player object context so it knows what it is 
-
-// function component(width, height, color, x, y) {
-//     this.width = width;
-//     this.height = height;
-//     this.speedX = 0;
-//     this.speedY = 0;
-//     this.x = x;
-//     this.y = y;
-//     this.update = function(){
-//     ctx = myGameArea.context;
-//     ctx.fillStyle = color;
-//     ctx.fillRect(this.x, this.y, this.width, this.height);
-//     this.move();
-
-//     document.addEventListener("keydown", this.keydown);
-//     document.addEventListener("keyup", this.keyup);
-//     }
-//     //movement 
-//     this.newPos = function() {
-//         this.x += this.speedX;
-//         this.y += this.speedY;
-//     }
-
-//    keydown =(e)=>{
-//         if (e.code === "ArrowUp"){
-//             this.upPressed =true;
-//         }
-//    }
-//    keyup =(e)=>{
-//         if (e.code === "ArrowUp"){
-//             this.upPressed =false;
-//         }
-//    }
-
-//    move() {
-//     if (this.upPressed) {
-//         this.y += this.speedY;
-//     }
-//    }
-// }
-
-// // Update function. Sets and clears game area 50fps
-
-// function updateGameArea() {
-//     myGameArea.clear();
-//     myGamePiece.speedX=0;
-//     myGamePiece.speedY=0;
-//     //Adding arrow control 
-//     myGamePiece.newPos();
-//     myGamePiece.update();
-// }
-
-// function moveLeft() {
-//     myGamePiece.x += 1;
-// }
-// function moveup() {
-//     myGamePiece.speedY -= 1;
-// }
-
-// function movedown() {
-//     myGamePiece.speedY += 1;
-// }
-
-
-// // Add frames to game 50fps
-
-
-
-
-
-// //Player movement control -- note the position of the player is changed using the x/y grid 
-
-// // when player is ducking, his height needs to be half and a new sprite needs to be drawn
-
-// // Adding event listeners 
-
-
-// // Setting up the canvas to have context and be drawn on 
-
-
-// // Canvas height 1080
+// Velocity equation = v(n+1) = a*t + v(n)
