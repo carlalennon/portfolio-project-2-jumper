@@ -31,6 +31,7 @@ let playerOnGround;
 let velocity = 0;
 var acceleration = .5; 
 let gravity = 9.8;
+let gameSpeed = -1;
 
 
 
@@ -88,7 +89,7 @@ function drawPlayer() {
 
 }
 
-function drawObstacle() {
+function Obstacle() {
     ctx.drawImage(
             sprAmp,
             ampX,
@@ -96,6 +97,8 @@ function drawObstacle() {
             ampWidth,
             ampHeight
     );
+
+    ampX += gameSpeed;
 }
 
 
@@ -113,18 +116,15 @@ ctx.stroke();
 
 // "loop", interval, frames 
 function intervalLoop() {
-    //Interact
 
-    //Logic
     collision();
-    //Physics Engine
-    
-    
+
     //Render
     ctx.clearRect(0,0,canvas.width, canvas.height);
     drawPlayer();
     drawFloor();
-    drawObstacle();
+    Obstacle();
+    gameSpeed -= .005;
 }
 setInterval(intervalLoop, 20);
 
