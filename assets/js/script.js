@@ -33,22 +33,60 @@ var acceleration = .5;
 let gravity = 9.8;
 let gameSpeed = -1;
 
+// Player controls 
+document.addEventListener("keydown", keyPress, false);
+document.addEventListener("keyup", keyPressUp, false);
+
+let upPressed = false;
+let downPressed = false;
 
 
 document.addEventListener("keydown", playerJump);
 
-// button controls
-function playerJump(e) {
-    switch(e.code) {
-        case "ArrowUp":
-            playerJump();
-        break;
+// // button controls
+// function playerJump(e) {
+//     switch(e.code) {
 
-        case "ArrowDown":
-            playerPositionY += 10;
-        break;
+//         case "Space":
+//             console.log("Spacebar");
+//         break;
+
+//         case "ArrowUp":
+//             playerJump();
+//         break;
+
+//         case "ArrowDown":
+//             playerPositionY += 10;
+//         break;
+
+        
+//     }
+
+// }
+
+//button controls 2 
+
+function keyPress(e) {
+    if (e.code === "ArrowUp") {
+        upPressed = true;
+    } else if (e.code === "ArrowDown") {
+        downPressed = true;
     }
+}
 
+function keyPressUp(e) {
+    if (e.code === "ArrowUp") {
+        upPressed = false;
+        console.log("key up");
+    } else if (e.code === "ArrowDown") {
+        downPressed = false;
+    }
+}
+
+function playerControls() {
+    if (upPressed === true) {
+        playerJump();
+    }
 }
 
 // jump animation 
