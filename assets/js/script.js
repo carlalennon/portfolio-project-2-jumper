@@ -32,6 +32,7 @@ const sprAmp = document.getElementById("obstacle-amp");
  
 let positionFloor = 179 - playerEdge.playerHeight;
 let playerOnGround;
+let collisionAmp;
 
 // Physics 
 let velocity = 0;
@@ -128,7 +129,9 @@ function draw() {
 
 
     // obstacle collider 
-
+            if (collisionAmp === true) {
+                console.log("Collide");
+            }
 
     obstacleEdge.ampX += gameSpeed;  
 
@@ -189,6 +192,16 @@ function collision() {
         console.log("Player is jump");
      }
 
+     // contact with obstacle 
+
+     if (playerEdge.playerX > obstacleEdge.ampX + obstacleEdge.ampWidth ||
+         playerEdge.playerX + playerEdge.playerWidth < obstacleEdge.ampX ||
+         playerEdge.playerPositionY > obstacleEdge.ampY + obstacleEdge.ampHeight ||
+         playerEdge.playerPositionY + playerEdge.playerHeight < obstacleEdge.ampY) {
+            collisionAmp = false;
+         } else {
+            collisionAmp = true;
+         }
 }
 
 
@@ -198,3 +211,7 @@ function collision() {
 // where p=position(x,y), v=velocity, t=time(milliseconds, intervalLoop)
 
 // Velocity equation = v(n+1) = a*t + v(n)
+
+// Obstacle collider 
+// if the player edge is within the obstacle it's a collide 
+// use arithmic operators 
