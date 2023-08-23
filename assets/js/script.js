@@ -102,13 +102,12 @@ function playerControls() {
     
   }
 
-function drawPlayer() {
-// placeholder player
+function draw() {
 
+
+    // placeholder player
         playerPositionY = playerPositionY + velocity;
         velocity = velocity + acceleration;
-
-      
             ctx.drawImage(
         
             playerSpr, //img
@@ -118,6 +117,7 @@ function drawPlayer() {
             playerHeight
             );
 
+            
         // Add floor collision to player 
         if (playerPositionY >= positionFloor){
             velocity = 0;
@@ -125,14 +125,9 @@ function drawPlayer() {
             playerY = positionFloor;
         }
  
-}
 
-          
-
-
-
-function Obstacle() {
-    ctx.drawImage(
+        //Draw obstacles 
+        ctx.drawImage(
             sprAmp,
             ampX,
             ampY,
@@ -140,23 +135,15 @@ function Obstacle() {
             ampHeight
     );
 
-    ampX += gameSpeed;
+    ampX += gameSpeed;  
 
 
+    // Draw floor line 
+        ctx.beginPath();
+        ctx.moveTo(0, 180);
+        ctx.lineTo(canvas.width, 180);
+        ctx.stroke();
 }
-
-
-function drawFloor() {
-// Draw floor line 
-ctx.beginPath();
-ctx.moveTo(0, 180);
-ctx.lineTo(canvas.width, 180);
-ctx.stroke();
-}
-
-
-
-
 
 // "loop", interval, frames 
 function intervalLoop() {
@@ -165,8 +152,7 @@ function intervalLoop() {
 
     //Render
     ctx.clearRect(0,0,canvas.width, canvas.height);
-    drawPlayer();
-    drawFloor();
+    draw();
     Obstacle();
     gameSpeed -= .005;
 
@@ -208,21 +194,9 @@ function collision() {
         playerOnGround = false;
         console.log("Player is jump");
      }
-    //contact with obstacle 
-    var collisionObj = true;
-     if (
-        (playerBottom <= objTop) ||
-        (playerTop >= objBottom) ||
-        (playerRight <= objLeft) ||
-        (playerLeft >= objRight))   {
-            collisionObj=false;
-        }
-    return collisionObj;
+
 }
 
-if (collision === true){
-    console.log("collisionObj");
-}
 
 // Physics
 
