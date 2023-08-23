@@ -138,3 +138,20 @@ obstacles need to be random, move twd player on x axis and drawn from file [http
 Can generate obstables in canvas using push method maybe
 
 Rejig keyboard controls [https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Desktop_with_mouse_and_keyboard]
+
+Obstacle collision handling attempt 1 [https://blog.thejaytray.com/canvas-basics-06-collision-detection/]
+
+Objects collide when the distance between them = 0; 
+Could check if dis = 0 within a function 
+
+ 
+
+if (distanceBetweenObjects === 0) {
+    gameOver();
+}
+
+function distanceBetweenObjects(player, object) {
+    if (playerArea is inside objArea) {
+        return 0;
+    }
+}

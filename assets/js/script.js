@@ -124,8 +124,12 @@ function drawPlayer() {
             acceleration = 0;
             playerY = positionFloor;
         }
-
+ 
 }
+
+          
+
+
 
 function Obstacle() {
     ctx.drawImage(
@@ -137,6 +141,8 @@ function Obstacle() {
     );
 
     ampX += gameSpeed;
+
+
 }
 
 
@@ -163,11 +169,30 @@ function intervalLoop() {
     drawFloor();
     Obstacle();
     gameSpeed -= .005;
+
+
+    
 }
 setInterval(intervalLoop, 20);
 
 
 //Collision logic 
+
+    let collisionObj;
+
+    // obstacle collision 
+    let objLeft = this.ampX;
+    let objRight = this.ampX + (this.ampWidth);
+    let objTop = this.ampY;
+    let objBottom = this.ampY + (this.ampHeight);
+
+    // Add collision box to player 
+    let playerLeft = this.playerX;
+    let playerRight = this.playerX + (this.playerWidth);
+    let playerTop = this.playerY;
+    let playerBottom = this.playerY + (this.playerHeight);
+
+
 
 function collision() {
     // contact with ground 
@@ -184,7 +209,19 @@ function collision() {
         console.log("Player is jump");
      }
     //contact with obstacle 
+    var collisionObj = true;
+     if (
+        (playerBottom <= objTop) ||
+        (playerTop >= objBottom) ||
+        (playerRight <= objLeft) ||
+        (playerLeft >= objRight))   {
+            collisionObj=false;
+        }
+    return collisionObj;
+}
 
+if (collision === true){
+    console.log("collisionObj");
 }
 
 // Physics
