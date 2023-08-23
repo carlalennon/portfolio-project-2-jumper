@@ -155,3 +155,6 @@ function distanceBetweenObjects(player, object) {
         return 0;
     }
 }
+
+
+Move co ords into variables so they can be referenced 

@@ -10,21 +10,27 @@ canvas.height= 200;
 
 //Set up player, variable are passed into the draw method below for scaling 
 const playerSpr = document.getElementById("sprite");
-const playerWidth = 50;
-const playerHeight = 100;
-let playerX = 10;
-let playerY = 80;
+var playerEdge = {
+ playerWidth : 50,
+ playerHeight : 100,
+ playerX : 10,
+ playerY : 80,
+ playerPositionY : 30
+}
 
 //Set up obstacle 
+var obstacleEdge = {
+    ampWidth : 50,
+    ampHeight : 50,
+    ampX : 200,
+    ampY : 130
+}
 const sprAmp = document.getElementById("obstacle-amp");
-const ampWidth = 50;
-const ampHeight = 50;
-let ampX = 200;
-let ampY = 130;
+
 
 //Collision
-let playerPositionY = 30; 
-let positionFloor = 179 - playerHeight;
+ 
+let positionFloor = 179 - playerEdge.playerHeight;
 let playerOnGround;
 
 // Physics 
@@ -42,27 +48,6 @@ let downPressed = false;
 
 
 document.addEventListener("keydown", playerJump);
-
-// // button controls
-// function playerJump(e) {
-//     switch(e.code) {
-
-//         case "Space":
-//             console.log("Spacebar");
-//         break;
-
-//         case "ArrowUp":
-//             playerJump();
-//         break;
-
-//         case "ArrowDown":
-//             playerPositionY += 10;
-//         break;
-
-        
-//     }
-
-// }
 
 //button controls 2 
 
@@ -95,31 +80,37 @@ function playerControls() {
     if (playerOnGround === true) {
     velocity = -10;
     acceleration = .5;
-    playerPositionY = playerPositionY + velocity*acceleration;
+    playerEdge.playerPositionY = playerEdge.playerPositionY + velocity*acceleration;
     } else {
         return;
     }
     
   }
 
+// Experiem
+
+
 function draw() {
 
 
     // placeholder player
-        playerPositionY = playerPositionY + velocity;
+    playerEdge.playerPositionY = playerEdge.playerPositionY + velocity;
         velocity = velocity + acceleration;
             ctx.drawImage(
         
             playerSpr, //img
-            playerX, //x co-ord
-            playerPositionY,  //y co-ord
-            playerWidth, 
-            playerHeight
+            playerEdge.playerX, //x co-ord
+            playerEdge.playerPositionY,  //y co-ord
+            playerEdge.playerWidth, 
+            playerEdge.playerHeight
             );
 
+            // Player collider box
             
+
+
         // Add floor collision to player 
-        if (playerPositionY >= positionFloor){
+        if (playerEdge.playerPositionY >= positionFloor){
             velocity = 0;
             acceleration = 0;
             playerY = positionFloor;
@@ -129,13 +120,17 @@ function draw() {
         //Draw obstacles 
         ctx.drawImage(
             sprAmp,
-            ampX,
-            ampY,
-            ampWidth,
-            ampHeight
+            obstacleEdge.ampX,
+            obstacleEdge.ampY,
+            obstacleEdge.ampWidth,
+            obstacleEdge.ampHeight
     );
 
-    ampX += gameSpeed;  
+
+    // obstacle collider 
+
+
+    obstacleEdge.ampX += gameSpeed;  
 
 
     // Draw floor line 
@@ -153,7 +148,6 @@ function intervalLoop() {
     //Render
     ctx.clearRect(0,0,canvas.width, canvas.height);
     draw();
-    Obstacle();
     gameSpeed -= .005;
 
 
@@ -182,11 +176,11 @@ setInterval(intervalLoop, 20);
 
 function collision() {
     // contact with ground 
-     if (playerPositionY >= positionFloor) {
+     if (playerEdge.playerPositionY >= positionFloor) {
         console.log("Player is on ground");
         velocity = 0;
         acceleration = 0;
-        playerPositionY=positionFloor;
+        playerEdge.playerPositionY=positionFloor;
         playerOnGround =true;
      }
 
