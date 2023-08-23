@@ -11,8 +11,8 @@ canvas.height= 200;
 //Set up player, variable are passed into the draw method below for scaling 
 const playerSpr = document.getElementById("sprite");
 var playerEdge = {
- playerWidth : 50,
- playerHeight : 100,
+ playerWidth : 30,
+ playerHeight : 60,
  playerX : 10,
  playerY : 80,
  playerPositionY : 30
@@ -20,10 +20,10 @@ var playerEdge = {
 
 //Set up obstacle 
 var obstacleEdge = {
-    ampWidth : 50,
-    ampHeight : 50,
+    ampWidth : 30,
+    ampHeight : 30,
     ampX : 200,
-    ampY : 130
+    ampY : 150
 }
 const sprAmp = document.getElementById("obstacle-amp");
 
@@ -38,7 +38,7 @@ let collisionAmp;
 let velocity = 0;
 var acceleration = .5; 
 let gravity = 9.8;
-let gameSpeed = -1;
+let gameSpeed = -3;
 
 // Player controls 
 document.addEventListener("keydown", keyPress, false);
@@ -126,7 +126,13 @@ function draw() {
             obstacleEdge.ampWidth,
             obstacleEdge.ampHeight
     );
+    console.log(obstacleEdge.ampX );
+    // Push new obstacles 
 
+    if (obstacleEdge.ampX < -50){
+        obstacleEdge.ampX = (Math.random(500;
+        console.log("Delete");
+    }
 
     // obstacle collider 
             if (collisionAmp === true) {
@@ -147,7 +153,6 @@ function draw() {
 function intervalLoop() {
 
     collision();
-
     //Render
     ctx.clearRect(0,0,canvas.width, canvas.height);
     draw();
