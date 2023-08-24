@@ -19,13 +19,21 @@ var playerEdge = {
 }
 
 //Set up obstacle 
+
+const sprAmp = document.getElementById("obstacle-amp");
 var obstacleEdge = {
     ampWidth : 30,
     ampHeight : 30,
     ampX : 200,
     ampY : 150
 }
-const sprAmp = document.getElementById("obstacle-amp");
+const sprMic = document.getElementById("obstacle-mic");
+var obstacleEdgeMic = {
+    micWidth : 20,
+    micHeight : 60,
+    micX : 60,
+    micY : 120
+}
 
 
 //Collision
@@ -79,7 +87,7 @@ function playerControls() {
   function playerJump() {
 
     if (playerOnGround === true) {
-    velocity = -10;
+    velocity = -8;
     acceleration = .5;
     playerEdge.playerPositionY = playerEdge.playerPositionY + velocity*acceleration;
     } else {
@@ -94,7 +102,6 @@ function playerControls() {
     function randomDistance(min, max) {
         return Math.random()*(max-min) + min;
     }
-    console.log(randomDistance(450,550));
     
 
 function draw() {
@@ -132,7 +139,14 @@ function draw() {
             obstacleEdge.ampWidth,
             obstacleEdge.ampHeight
     );
-    console.log(obstacleEdge.ampX );
+    ctx.drawImage(
+        sprMic,
+        obstacleEdgeMic.micX,
+        obstacleEdgeMic.micY,
+        obstacleEdgeMic.micWidth,
+        obstacleEdgeMic.micHeight
+);
+
     // Push new obstacles 
 
     if (obstacleEdge.ampX < -50){
@@ -162,7 +176,7 @@ function intervalLoop() {
     //Render
     ctx.clearRect(0,0,canvas.width, canvas.height);
     draw();
-    gameSpeed -= .005;
+    gameSpeed -= .0005;
 
 
     
