@@ -29,7 +29,7 @@ var obstacleEdge = {
 }
 const sprMic = document.getElementById("obstacle-mic");
 var obstacleEdgeMic = {
-    micWidth : 20,
+    micWidth : 30,
     micHeight : 60,
     micX : 60,
     micY : 120
@@ -41,6 +41,7 @@ var obstacleEdgeMic = {
 let positionFloor = 179 - playerEdge.playerHeight;
 let playerOnGround;
 let collisionAmp;
+let collisionMic;
 
 // Physics 
 let velocity = 0;
@@ -71,7 +72,6 @@ function keyPress(e) {
 function keyPressUp(e) {
     if (e.code === "ArrowUp") {
         upPressed = false;
-        console.log("key up");
     } else if (e.code === "ArrowDown") {
         downPressed = false;
     }
@@ -155,12 +155,16 @@ function draw() {
     }
 
     if (obstacleEdgeMic.micX< -50){
-        obstacleEdgeMic.micX = randomDistance(400, 1200);
+        obstacleEdgeMic.micX = randomDistance(400, 2000);
     }
 
     // obstacle collider 
             if (collisionAmp === true) {
-                console.log("Collide");
+                console.log("Collide Amp");
+            }
+
+            if (collisionMic === true) {
+                console.log("Collide Mic");
             }
 
     // Draw floor line 
@@ -206,7 +210,6 @@ setInterval(intervalLoop, 20);
 function collision() {
     // contact with ground 
      if (playerEdge.playerPositionY >= positionFloor) {
-        console.log("Player is on ground");
         velocity = 0;
         acceleration = 0;
         playerEdge.playerPositionY=positionFloor;
@@ -215,11 +218,10 @@ function collision() {
 
      else {
         playerOnGround = false;
-        console.log("Player is jump");
      }
 
      // contact with obstacle 
-        // Amp
+        // Amp (for player)
      if (playerEdge.playerX > obstacleEdge.ampX + obstacleEdge.ampWidth ||
          playerEdge.playerX + playerEdge.playerWidth < obstacleEdge.ampX ||
          playerEdge.playerPositionY > obstacleEdge.ampY + obstacleEdge.ampHeight ||
@@ -228,6 +230,20 @@ function collision() {
          } else {
             collisionAmp = true;
          }
+        
+         // Mic (for player)
+
+     if (playerEdge.playerX > obstacleEdgeMic.micX + obstacleEdgeMic.micWidth ||
+         playerEdge.playerX + playerEdge.playerWidth < obstacleEdgeMic.micX ||
+         playerEdge.playerPositionY > obstacleEdgeMic.micY + obstacleEdgeMic.micHeight ||
+         playerEdge.playerPositionY + playerEdge.playerHeight < obstacleEdgeMic.micY) {
+               collisionMic = false;
+            } else {
+               collisionMic = true;
+            }    
+         // Amp (for mic - draw a larger box around the amp and prevent a mic from spawning within this box, so that obstacles aren't too close together)
+       
+
 }
 
 
@@ -240,4 +256,4 @@ function collision() {
 
 // Obstacle collider 
 // if the player edge is within the obstacle it's a collide 
-// use arithmic operators 
+// use arithmic operators  

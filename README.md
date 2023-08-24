@@ -158,3 +158,16 @@ function distanceBetweenObjects(player, object) {
 
 
 Move co ords into variables so they can be referenced 
+
+Generating a random interval 450-550 [https://www.educative.io/answers/how-to-generate-a-random-number-between-a-range-in-javascript]
+
+I want roughly 1 mic for every 5 amps, so the random range should be 5x the amp range to average out the numberss
+
+Instead of calculating custom bounding box, for mic collision check : 
+        if ( mic collision true + down button held){
+            continue game
+        } else if {
+            (mic collision true + !down button held){
+                end game 
+            }
+        }
