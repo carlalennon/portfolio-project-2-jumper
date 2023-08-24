@@ -154,6 +154,10 @@ function draw() {
         obstacleEdge.ampX = randomDistance(400,700);
     }
 
+    if (obstacleEdgeMic.micX< -50){
+        obstacleEdgeMic.micX = randomDistance(400, 1200);
+    }
+
     // obstacle collider 
             if (collisionAmp === true) {
                 console.log("Collide");
@@ -215,7 +219,7 @@ function collision() {
      }
 
      // contact with obstacle 
-
+        // Amp
      if (playerEdge.playerX > obstacleEdge.ampX + obstacleEdge.ampWidth ||
          playerEdge.playerX + playerEdge.playerWidth < obstacleEdge.ampX ||
          playerEdge.playerPositionY > obstacleEdge.ampY + obstacleEdge.ampHeight ||
