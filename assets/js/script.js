@@ -118,11 +118,7 @@ function draw() {
             playerEdge.playerWidth, 
             playerEdge.playerHeight
             );
-
-            // Player collider box
             
-
-
         // Add floor collision to player 
         if (playerEdge.playerPositionY >= positionFloor){
             velocity = 0;
@@ -139,28 +135,29 @@ function draw() {
             obstacleEdge.ampWidth,
             obstacleEdge.ampHeight
     );
-    ctx.drawImage(
-        sprMic,
-        obstacleEdgeMic.micX,
-        obstacleEdgeMic.micY,
-        obstacleEdgeMic.micWidth,
-        obstacleEdgeMic.micHeight
-);
+        ctx.drawImage(
+            sprMic,
+            obstacleEdgeMic.micX,
+            obstacleEdgeMic.micY,
+            obstacleEdgeMic.micWidth,
+            obstacleEdgeMic.micHeight
+    );
+
+    // Animate obstacles            
+    obstacleEdge.ampX += gameSpeed; 
+    obstacleEdgeMic.micX += gameSpeed; 
+
 
     // Push new obstacles 
 
     if (obstacleEdge.ampX < -50){
         obstacleEdge.ampX = randomDistance(400,700);
-        console.log("Delete");
     }
 
     // obstacle collider 
             if (collisionAmp === true) {
                 console.log("Collide");
             }
-
-    obstacleEdge.ampX += gameSpeed;  
-
 
     // Draw floor line 
         ctx.beginPath();
