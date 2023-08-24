@@ -90,6 +90,12 @@ function playerControls() {
 
 // Experiem
 
+// Interval for obstacles 
+    function randomDistance(min, max) {
+        return Math.random()*(max-min) + min;
+    }
+    console.log(randomDistance(450,550));
+    
 
 function draw() {
 
@@ -130,7 +136,7 @@ function draw() {
     // Push new obstacles 
 
     if (obstacleEdge.ampX < -50){
-        obstacleEdge.ampX = (Math.random(500;
+        obstacleEdge.ampX = randomDistance(400,700);
         console.log("Delete");
     }
 
