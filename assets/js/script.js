@@ -50,53 +50,43 @@ let gravity = 9.8;
 let gameSpeed = -3;
 
 // Player controls 
-document.addEventListener("keydown", keyPress, false);
-document.addEventListener("keyup", keyPressUp, false);
+let upPressed = false;  // Stores if up key has been pressed 
+let downPressed = false; // Store if down key has been pressed 
 
-let upPressed = false;
-let downPressed = false;
-
-
-document.addEventListener("keydown", playerJump);
-
-//button controls 2 
-
-function keyPress(e) {
-    if (e.code === "ArrowUp") {
+document.addEventListener("keydown", function(e)  
+{
+    if (e.key == "ArrowUp"){
+        console.log("Up arrow");
         upPressed = true;
-    } else if (e.code === "ArrowDown") {
-        downPressed = true;
+        playerJump();
+    } else if (e.key == "ArrowDown") {
+        console.log("Down Arrow");
+        dowPressed = true;
     }
-}
+});
 
-function keyPressUp(e) {
-    if (e.code === "ArrowUp") {
+document.addEventListener("keyup", function(e)  
+{
+    if (e.key == "ArrowUp"){
+        console.log("Up arrow up");
         upPressed = false;
-    } else if (e.code === "ArrowDown") {
+    } else if (e.key == "ArrowDown") {
+        console.log("Down Arrow up");
         downPressed = false;
     }
-}
-
-function playerControls() {
-    if (upPressed === true) {
-        playerJump();
-    }
-}
+});
 
 // jump animation 
   function playerJump() {
 
     if (playerOnGround === true) {
-    velocity = -8;
+    velocity += -8;
     acceleration = .5;
     playerEdge.playerPositionY = playerEdge.playerPositionY + velocity*acceleration;
     } else {
         return;
-    }
-    
+    } 
   }
-
-// Experiem
 
 // Interval for obstacles 
     function randomDistance(min, max) {
