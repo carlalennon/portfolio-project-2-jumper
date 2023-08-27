@@ -24,14 +24,14 @@ const sprAmp = document.getElementById("obstacle-amp");
 var obstacleEdge = {
     ampWidth : 30,
     ampHeight : 30,
-    ampX : 200,
+    ampX : 500,
     ampY : 150
 }
 const sprMic = document.getElementById("obstacle-mic");
 var obstacleEdgeMic = {
     micWidth : 30,
     micHeight : 60,
-    micX : 60,
+    micX : 600,
     micY : 120
 }
 
@@ -51,6 +51,9 @@ let gameSpeed = -3;
 // Player controls 
 let upPressed = false;  // Stores if up key has been pressed 
 let downPressed = false; // Store if down key has been pressed 
+
+//Game over handling 
+let gameOverState = false;
 
 document.addEventListener("keydown", function(e)  
 {
@@ -167,6 +170,7 @@ function intervalLoop() {
     ctx.clearRect(0,0,canvas.width, canvas.height);
     draw();
     gameOver();
+    resetGame();
     //Game gets faster over time 
     gameSpeed -= .0005;   
 }
@@ -231,17 +235,26 @@ function collision() {
 function gameOver() {
     if (collisionAmp == true) {
         ctx.font = "48px serif";
-        ctx.fillText("Game Over", 10, 50);
+        ctx.fillText("Game Over", 90, 50);
         gameSpeed = 0;
+        gameOverState = true;
     }
 
     if (collisionMic == true && downPressed !== true){
         ctx.font = "48px serif";
-        ctx.fillText("Game Over", 10, 50);
+        ctx.fillText("Game Over", 90, canvas.height/3);
         gameSpeed = 0;
+        gameOverState = true;
     }
 }
 
+
+function resetGame() {
+    if (gameOverState == true) {
+        ctx.font = "20px serif";
+        ctx.fillText("Press enter to play again", 100, canvas.height/2);
+    }
+}
 
 // Physics
 
