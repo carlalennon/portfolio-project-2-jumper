@@ -45,7 +45,6 @@ let collisionMic;
 // Physics 
 let velocity = 0;
 var acceleration = .5; 
-let gravity = 9.8;
 let gameSpeed = -3;
 
 // Player controls 
@@ -67,7 +66,7 @@ document.addEventListener("keydown", function(e)
         downPressed = true; 
     }
 
-    if (e.key == "Enter"){
+    if (e.key == "Enter" && gameOverState == true){
         console.log("Enter key");
         resetGame();
     }
@@ -260,16 +259,24 @@ function gameOver() {
     }
 }
 
-
 function resetGame() {
-    console.log("Reset");
-        gameOverstate = false;
 
-        // clear board
-        
-        // reset variables
+    gameOverState = false; 
+    //reset player
+    playerEdge.playerWidth = 30;
+    playerEdge.playerHeight = 60;
+    playerEdge.playerX = 10;
+    playerEdge.playerY = 80;
+    playerEdge.playerPositionY = 30;
 
-    }
+    //reset obstacles
+    obstacleEdge.ampX = randomDistance(400,700);
+    obstacleEdgeMic.micX = randomDistance(400, 2000);
+
+    // reset game speed 
+    gameSpeed = -3;
+
+}
 
 // Physics
 
