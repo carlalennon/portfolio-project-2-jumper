@@ -17,18 +17,17 @@ sprMic.src = "./assets/images/spr-obstacle-mic.png";
 const gameOverSprite = new Image();
 gameOverSprite.src = "./assets/images/game-over=screen-temp.png";
 
-
 // overrides default canvas w/h
-canvas.width = 400;
-canvas.height= 200;
+canvas.width = 800;
+canvas.height= 400;
 
 //Set up player, variable are passed into the draw method below for scaling 
 var playerEdge = {
- playerWidth : 30,
- playerHeight : 60,
- playerX : 10,
- playerY : 80,
- playerPositionY : 30
+ playerWidth : 60,
+ playerHeight : 120,
+ playerX : 20,
+ playerY : 160,
+ playerPositionY : 60
 }
 
 // Animation handling 
@@ -36,21 +35,21 @@ let frameWidth
 
 //Set up obstacle 
 var obstacleEdge = {
-    ampWidth : 30,
-    ampHeight : 30,
-    ampX : 500,
-    ampY : 150
+    ampWidth : 60,
+    ampHeight : 60,
+    ampX : 1000,
+    ampY : 300
 }
 
 var obstacleEdgeMic = {
-    micWidth : 30,
-    micHeight : 60,
-    micX : 600,
-    micY : 120
+    micWidth : 60,
+    micHeight : 120,
+    micX : 1200,
+    micY : 240
 }
 
 //Collision 
-let positionFloor = 120;
+let positionFloor = 240;
 let playerOnGround;
 let collisionAmp;
 let collisionMic;
@@ -99,7 +98,7 @@ document.addEventListener("keyup", function(e)
   function playerJump() {
 
     if (playerOnGround === true) {
-    velocity = -8;
+    velocity = -13;
     acceleration = .5;
     playerEdge.playerPositionY = playerEdge.playerPositionY + velocity*acceleration;
     } else {
@@ -157,11 +156,11 @@ function draw() {
 
     // Push new obstacles 
     if (obstacleEdge.ampX < -50){
-        obstacleEdge.ampX = randomDistance(400,700);
+        obstacleEdge.ampX = randomDistance(800,1400);
     }
 
     if (obstacleEdgeMic.micX< -50){
-        obstacleEdgeMic.micX = randomDistance(400, 2000);
+        obstacleEdgeMic.micX = randomDistance(800, 4000);
     }
 
     // obstacle collider 
@@ -275,15 +274,15 @@ function resetGame() {
 
     gameOverState = false; 
     //reset player
-    playerEdge.playerWidth = 30;
-    playerEdge.playerHeight = 60;
-    playerEdge.playerX = 10;
-    playerEdge.playerY = 80;
-    playerEdge.playerPositionY = 30;
+    playerEdge.playerWidth = 60;
+    playerEdge.playerHeight = 120;
+    playerEdge.playerX = 20;
+    playerEdge.playerY = 160;
+    playerEdge.playerPositionY = 60;
 
     //reset obstacles
-    obstacleEdge.ampX = randomDistance(400,700);
-    obstacleEdgeMic.micX = randomDistance(400, 2000);
+    obstacleEdge.ampX = randomDistance(800,1400);
+    obstacleEdgeMic.micX = randomDistance(800, 4000);
 
     // reset game speed 
     gameSpeed = -3;
