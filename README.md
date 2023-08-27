@@ -177,3 +177,8 @@ Change keyboard controls. Had it so that all keys made him jump [https://www.w3s
 Time to add game over condition + text [https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text]
 On game over * Game speed = 0 
             * Game over printed to canvas 
+            * Promt player tp play again 
+
+To reset game, programme should 
+        * Reset variables 
+        * Remove UI related to game over
