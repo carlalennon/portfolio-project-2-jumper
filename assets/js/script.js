@@ -53,6 +53,7 @@ let upPressed = false;  // Stores if up key has been pressed
 let downPressed = false; // Store if down key has been pressed 
 
 //Game over handling 
+let gameOverSprite = document.getElementById("game-over-screen");
 let gameOverState = false;
 
 document.addEventListener("keydown", function(e)  
@@ -170,9 +171,13 @@ function draw() {
     // Game over screen 
      
     if (gameOverState == true){
-        ctx.rect(0,0, canvas.width, canvas.height);
-        ctx.fillStyle = "red";
-        ctx.fill();
+        ctx.drawImage(
+            gameOverSprite,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
     }
 }
 
