@@ -4,12 +4,25 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+// Set HTML image elements and assign to variables
+const playerSpr = new Image();
+playerSpr.src = "./assets/images/temp-sprite.png";
+
+const sprAmp = new Image();
+sprAmp.src = "./assets/images/spr-obstacle-amp-temp.png";
+
+const sprMic = new Image();
+sprMic.src = "./assets/images/spr-obstacle-mic.png";
+
+const gameOverSprite = new Image();
+gameOverSprite.src = "./assets/images/game-over=screen-temp.png";
+
+
 // overrides default canvas w/h
 canvas.width = 400;
 canvas.height= 200;
 
 //Set up player, variable are passed into the draw method below for scaling 
-const playerSpr = document.getElementById("sprite");
 var playerEdge = {
  playerWidth : 30,
  playerHeight : 60,
@@ -22,14 +35,13 @@ var playerEdge = {
 let frameWidth 
 
 //Set up obstacle 
-const sprAmp = document.getElementById("obstacle-amp");
 var obstacleEdge = {
     ampWidth : 30,
     ampHeight : 30,
     ampX : 500,
     ampY : 150
 }
-const sprMic = document.getElementById("obstacle-mic");
+
 var obstacleEdgeMic = {
     micWidth : 30,
     micHeight : 60,
@@ -53,7 +65,6 @@ let upPressed = false;  // Stores if up key has been pressed
 let downPressed = false; // Store if down key has been pressed 
 
 //Game over handling 
-let gameOverSprite = document.getElementById("game-over-screen");
 let gameOverState = false;
 
 document.addEventListener("keydown", function(e)  
