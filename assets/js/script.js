@@ -36,9 +36,8 @@ var obstacleEdgeMic = {
 }
 
 
-//Collision
- 
-let positionFloor = 179 - playerEdge.playerHeight;
+//Collision 
+let positionFloor = 120;
 let playerOnGround;
 let collisionAmp;
 let collisionMic;
@@ -61,7 +60,7 @@ document.addEventListener("keydown", function(e)
         playerJump();
     } else if (e.key == "ArrowDown") {
         console.log("Down Arrow");
-        dowPressed = true;
+        downPressed = true; 
     }
 });
 
@@ -80,13 +79,14 @@ document.addEventListener("keyup", function(e)
   function playerJump() {
 
     if (playerOnGround === true) {
-    velocity += -8;
+    velocity = -8;
     acceleration = .5;
     playerEdge.playerPositionY = playerEdge.playerPositionY + velocity*acceleration;
     } else {
         return;
     } 
   }
+
 
 // Interval for obstacles 
     function randomDistance(min, max) {
@@ -95,8 +95,6 @@ document.addEventListener("keyup", function(e)
     
 
 function draw() {
-
-
     // placeholder player
     playerEdge.playerPositionY = playerEdge.playerPositionY + velocity;
         velocity = velocity + acceleration;
@@ -116,7 +114,6 @@ function draw() {
             playerY = positionFloor;
         }
  
-
         //Draw obstacles 
         ctx.drawImage(
             sprAmp,
@@ -139,7 +136,6 @@ function draw() {
 
 
     // Push new obstacles 
-
     if (obstacleEdge.ampX < -50){
         obstacleEdge.ampX = randomDistance(400,700);
     }
@@ -166,15 +162,13 @@ function draw() {
 
 // "loop", interval, frames 
 function intervalLoop() {
-
     collision();
     //Render
     ctx.clearRect(0,0,canvas.width, canvas.height);
     draw();
-    gameSpeed -= .0005;
-
-
-    
+    gameOver();
+    //Game gets faster over time 
+    gameSpeed -= .0005;   
 }
 setInterval(intervalLoop, 20);
 
@@ -232,8 +226,20 @@ function collision() {
                collisionMic = true;
             }    
          // Amp (for mic - draw a larger box around the amp and prevent a mic from spawning within this box, so that obstacles aren't too close together)
-       
+}
 
+function gameOver() {
+    if (collisionAmp == true) {
+        ctx.font = "48px serif";
+        ctx.fillText("Game Over", 10, 50);
+        gameSpeed = 0;
+    }
+
+    if (collisionMic == true && downPressed !== true){
+        ctx.font = "48px serif";
+        ctx.fillText("Game Over", 10, 50);
+        gameSpeed = 0;
+    }
 }
 
 

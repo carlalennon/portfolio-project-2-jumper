@@ -171,3 +171,9 @@ Instead of calculating custom bounding box, for mic collision check :
                 end game 
             }
         }
+
+Change keyboard controls. Had it so that all keys made him jump [https://www.w3schools.com/graphics/game_controllers.asp]
+
+Time to add game over condition + text [https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_text]
+On game over * Game speed = 0 
+            * Game over printed to canvas 
