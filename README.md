@@ -182,3 +182,12 @@ On game over * Game speed = 0
 To reset game, programme should 
         * Reset variables 
         * Remove UI related to game over
+
+Bug : Player can cheat while holding down arrow 
+
+
+Animation ttimme [ https://spicyyoghurt.com/tutorials/html5-javascript-game-development/images-and-sprite-animations]
+
+
+Building web page 
+*Take inspritation from early internet culture - miniclip, newgrounds

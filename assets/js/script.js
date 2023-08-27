@@ -18,8 +18,10 @@ var playerEdge = {
  playerPositionY : 30
 }
 
-//Set up obstacle 
+// Animation handling 
+let frameWidth 
 
+//Set up obstacle 
 const sprAmp = document.getElementById("obstacle-amp");
 var obstacleEdge = {
     ampWidth : 30,
@@ -34,7 +36,6 @@ var obstacleEdgeMic = {
     micX : 600,
     micY : 120
 }
-
 
 //Collision 
 let positionFloor = 120;
@@ -278,6 +279,8 @@ function resetGame() {
     velocity = 0;
     acceleration = .5; 
 }
+
+
 
 // Physics
 

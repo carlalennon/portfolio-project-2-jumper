@@ -3,6 +3,13 @@
     margin:0;
 }
 
+body {
+    background-image : url(../images/site-background.png);
+    background-color : #45283C;
+    background-repeat : no-repeat;
+    background-attachment : scroll;
+    background-size: cover;
+}
 canvas {
     background: grey;
     border: 3px solid red;
