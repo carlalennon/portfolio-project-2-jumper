@@ -36,6 +36,20 @@ footer {
     bottom: 0;
 }
 
+.logo {
+    height:80px;
+    width:80px;
+}
+
+.sm-tag {
+    height:100px;
+    width:400px;
+    right:30px;
+    position:absolute;
+}
 #social-media-links {
-    display: flex;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
 }
