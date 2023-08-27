@@ -65,6 +65,11 @@ document.addEventListener("keydown", function(e)
         console.log("Down Arrow");
         downPressed = true; 
     }
+
+    if (e.key == "Enter"){
+        console.log("Enter key");
+        resetGame();
+    }
 });
 
 document.addEventListener("keyup", function(e)  
@@ -161,6 +166,14 @@ function draw() {
         ctx.moveTo(0, 180);
         ctx.lineTo(canvas.width, 180);
         ctx.stroke();
+
+    // Game over screen 
+     
+    if (gameOverState == true){
+        ctx.rect(0,0, canvas.width, canvas.height);
+        ctx.fillStyle = "red";
+        ctx.fill();
+    }
 }
 
 // "loop", interval, frames 
@@ -170,7 +183,6 @@ function intervalLoop() {
     ctx.clearRect(0,0,canvas.width, canvas.height);
     draw();
     gameOver();
-    resetGame();
     //Game gets faster over time 
     gameSpeed -= .0005;   
 }
@@ -234,15 +246,10 @@ function collision() {
 
 function gameOver() {
     if (collisionAmp == true) {
-        ctx.font = "48px serif";
-        ctx.fillText("Game Over", 90, 50);
         gameSpeed = 0;
         gameOverState = true;
     }
-
     if (collisionMic == true && downPressed !== true){
-        ctx.font = "48px serif";
-        ctx.fillText("Game Over", 90, canvas.height/3);
         gameSpeed = 0;
         gameOverState = true;
     }
@@ -250,11 +257,14 @@ function gameOver() {
 
 
 function resetGame() {
-    if (gameOverState == true) {
-        ctx.font = "20px serif";
-        ctx.fillText("Press enter to play again", 100, canvas.height/2);
+    console.log("Reset");
+        gameOverstate = false;
+
+        // clear board
+        
+        // reset variables
+
     }
-}
 
 // Physics
 
