@@ -26,3 +26,16 @@ canvas {
     width: 100vh;
     height: auto;
 }
+
+footer {
+    background-color: black;
+    display: block;
+    position:fixed;
+    height: 100px;
+    width: 100%;
+    bottom: 0;
+}
+
+#social-media-links {
+    display: flex;
+}
