@@ -1,8 +1,0 @@
-class obstacleAmp {
-    //contruct 
-
-
-    //draw 
-    
-    }
-}
