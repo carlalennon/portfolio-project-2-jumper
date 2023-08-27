@@ -275,7 +275,8 @@ function resetGame() {
 
     // reset game speed 
     gameSpeed = -3;
-
+    velocity = 0;
+    acceleration = .5; 
 }
 
 // Physics
