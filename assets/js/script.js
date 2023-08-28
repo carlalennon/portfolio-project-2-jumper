@@ -57,7 +57,7 @@ let collisionMic;
 // Physics 
 let velocity = 0;
 var acceleration = .5; 
-let gameSpeed = -3;
+let gameSpeed = -5;
 
 // Player controls 
 let upPressed = false;  // Stores if up key has been pressed 
@@ -65,6 +65,8 @@ let downPressed = false; // Store if down key has been pressed
 
 //Game over handling 
 let gameOverState = false;
+let score = 0; 
+let highScore= [];
 
 document.addEventListener("keydown", function(e)  
 {
@@ -189,6 +191,24 @@ function draw() {
             canvas.height
         );
     }
+
+    // Score 
+   
+
+    if (gameOverState == false){
+        ctx.font = "20px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(`Score: ${score}`, 10, 50);
+    ctx.fillText(`High score: ${highScore[0]}`, 100, 50);
+    score++;
+    } else if (gameOverState == true){
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(`Final score: ${score}`, canvas.width/2, 50);
+        highScore.push(score);
+        highScoreSort();
+    }
+    
 }
 
 // "loop", interval, frames 
@@ -200,6 +220,7 @@ function intervalLoop() {
     gameOver();
     //Game gets faster over time 
     gameSpeed -= .0005;   
+    
 }
 setInterval(intervalLoop, 20);
 
@@ -285,10 +306,13 @@ function resetGame() {
     obstacleEdgeMic.micX = randomDistance(800, 4000);
 
     // reset game speed 
-    gameSpeed = -3;
+    gameSpeed = -5;
     velocity = 0;
     acceleration = .5; 
+
+    score=0;
 }
+
 
 
 

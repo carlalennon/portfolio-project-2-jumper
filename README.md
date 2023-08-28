@@ -191,3 +191,7 @@ Animation ttimme [ https://spicyyoghurt.com/tutorials/html5-javascript-game-deve
 
 Building web page 
 *Take inspritation from early internet culture - miniclip, newgrounds
+
+Add a score keeper [https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Track_the_score_and_win]
+
+Add high score but it's broken (only shows 1st score)
