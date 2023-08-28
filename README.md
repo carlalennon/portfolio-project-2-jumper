@@ -195,3 +195,5 @@ Building web page
 Add a score keeper [https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Track_the_score_and_win]
 
 Add high score but it's broken (only shows 1st score)
+
+Use animation tutorials : [https://www.youtube.com/watch?v=CY0HE277IBM&list=PLYElE_rzEw_uryBrrzu2E626MY4zoXvx2&ab_channel=Frankslaboratory] and [https://spicyyoghurt.com/tutorials/html5-javascript-game-development/images-and-sprite-animations]
