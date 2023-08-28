@@ -6,7 +6,7 @@ const ctx = canvas.getContext("2d");
 
 // Set HTML image elements and assign to variables
 const playerSpr = new Image();
-playerSpr.src = "./assets/images/temp-sprite.png";
+playerSpr.src = "./assets/images/spr-player-anim-temp-sheet-export-hi-res.png";
 
 const sprAmp = new Image();
 sprAmp.src = "./assets/images/spr-obstacle-amp-temp.png";
@@ -31,7 +31,8 @@ var playerEdge = {
 }
 
 // Animation handling 
-let frameWidth 
+let frameWidth = 80;
+let frameHeight = 160;
 
 //Set up obstacle 
 var obstacleEdge = {
@@ -66,7 +67,7 @@ let downPressed = false; // Store if down key has been pressed
 //Game over handling 
 let gameOverState = false;
 let score = 0; 
-let highScore= [];
+let highScore= [0];
 
 document.addEventListener("keydown", function(e)  
 {
@@ -122,8 +123,12 @@ function draw() {
             ctx.drawImage(
         
             playerSpr, //img
-            playerEdge.playerX, //x co-ord
-            playerEdge.playerPositionY,  //y co-ord
+            0, //x co-ord
+            0,  //y co-ord
+            frameWidth,
+            frameHeight,
+            playerEdge.playerX,
+            playerEdge.playerPositionY,
             playerEdge.playerWidth, 
             playerEdge.playerHeight
             );
