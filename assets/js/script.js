@@ -6,7 +6,7 @@ const ctx = canvas.getContext("2d");
 
 // Set HTML image elements and assign to variables
 const playerSpr = new Image();
-playerSpr.src = "./assets/images/spr-player-anim-temp-sheet-export-hi-res.png";
+playerSpr.src = "./assets/images/spr-player-anim-temp-sheet-750.png";
 
 const sprAmp = new Image();
 sprAmp.src = "./assets/images/spr-obstacle-amp-temp.png";
@@ -25,30 +25,33 @@ canvas.height= 400;
 var playerEdge = {
  playerWidth : 60,
  playerHeight : 120,
- playerX : 20,
- playerY : 160,
+ playerX : 30,
+ playerY : 360,
  playerPositionY : 60
 }
 
 // Animation handling from Frank's Lab -- See ReadMe
-const frameWidth = 80; // Sprite sheet slicing
-const frameHeight = 160;
+const frameWidth = 60; // Sprite sheet slicing
+const frameHeight = 120;
 
-let frameNo = 0; // X of sheet
-let frameType = 0; // y of sheet
-
+let frameX = 0; // X of sheet
+let frameY = 0; // y of sheet
 let gameFrame = 0;
 const staggerFrames = 3;
 
-const spriteAnimations = [];
+const spriteAnimations = []; 
 let playerState = "run";
 
 animations = [
-    {name: "run",
-     frames:7},
+    {
+     name: "run",
+     frames:5,
+    },
 
-    {name: "jump",
-    frames:2}
+    {
+        name: "jump",
+        frames:2,
+    }
 ];
 animations.forEach((state, index) => {
     let frames = {
@@ -62,7 +65,7 @@ animations.forEach((state, index) => {
 
     spriteAnimations[state.name] = frames;
 });
-
+console.log(animations);
 
 //Set up obstacle 
 var obstacleEdge = {
@@ -80,7 +83,7 @@ var obstacleEdgeMic = {
 }
 
 //Collision 
-let positionFloor = 240;
+let positionFloor = 360;
 let playerOnGround;
 let collisionAmp;
 let collisionMic;
@@ -155,18 +158,57 @@ function draw() {
         let frameX = frameWidth * position;
         let frameY = spriteAnimations[playerState].loc[position].y;
 
-            ctx.drawImage(
-            playerSpr, //img
-            frameNo, //x co-ord on sheet
-            frameType,  //y co-ord on sheet (framepicker)
-            frameWidth,
-            frameHeight,
-            playerEdge.playerX,
-            playerEdge.playerPositionY,
-            playerEdge.playerWidth, 
-            playerEdge.playerHeight
-            );
-
+            if(upPressed!== true && downPressed !== true)
+                {
+                    ctx.drawImage(
+                    playerSpr, //img
+                    frameX, //x co-ord on sheet
+                    frameY,  //y co-ord on sheet (framepicker)
+                    frameWidth,
+                    frameHeight,
+                    playerEdge.playerX,
+                    playerEdge.playerPositionY,
+                    frameWidth, 
+                    frameHeight
+                    );
+                    gameFrame++;
+                
+                } 
+                else if (upPressed = true)
+                {
+                    frameY = 1;
+                    ctx.drawImage(
+                    playerSpr, //img
+                    frameX, //x co-ord on sheet
+                    frameY,  //y co-ord on sheet (framepicker)
+                    frameWidth,
+                    frameHeight,
+                    playerEdge.playerX,
+                    playerEdge.playerPositionY,
+                    frameWidth, 
+                    frameHeight
+                    );
+                    gameFrame++;
+                }   
+                else if (downPressed = true)
+                {
+                    frameY = 2;
+                    ctx.drawImage(
+                    playerSpr, //img
+                    frameX, //x co-ord on sheet
+                    frameY,  //y co-ord on sheet (framepicker)
+                    frameWidth,
+                    frameHeight,
+                    playerEdge.playerX,
+                    playerEdge.playerPositionY,
+                    frameWidth, 
+                    frameHeight
+                    );
+                    gameFrame++;
+                };
+        };
+    
+           
         // Add floor collision to player 
         if (playerEdge.playerPositionY >= positionFloor){
             velocity = 0;
@@ -189,9 +231,6 @@ function draw() {
             obstacleEdgeMic.micWidth,
             obstacleEdgeMic.micHeight
     );
-   
-    
-
    
     // Animate obstacles            
     obstacleEdge.ampX += gameSpeed; 
@@ -218,8 +257,8 @@ function draw() {
 
     // Draw floor line 
         ctx.beginPath();
-        ctx.moveTo(0, 180);
-        ctx.lineTo(canvas.width, 180);
+        ctx.moveTo(0, positionFloor);
+        ctx.lineTo(canvas.width, positionFloor);
         ctx.stroke();
 
     // Game over screen 
