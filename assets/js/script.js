@@ -30,9 +30,39 @@ var playerEdge = {
  playerPositionY : 60
 }
 
-// Animation handling 
-let frameWidth = 80;
-let frameHeight = 160;
+// Animation handling from Frank's Lab -- See ReadMe
+const frameWidth = 80; // Sprite sheet slicing
+const frameHeight = 160;
+
+let frameNo = 0; // X of sheet
+let frameType = 0; // y of sheet
+
+let gameFrame = 0;
+const staggerFrames = 3;
+
+const spriteAnimations = [];
+let playerState = "run";
+
+animations = [
+    {name: "run",
+     frames:7},
+
+    {name: "jump",
+    frames:2}
+];
+animations.forEach((state, index) => {
+    let frames = {
+        loc: [],
+    }
+    for (let j=0; j <state.frames; j++){
+        let positionX = j*frameWidth;
+        let positionY = index*frameHeight;
+        frames.loc.push({x:positionX, y:positionY});
+    }
+
+    spriteAnimations[state.name] = frames;
+});
+
 
 //Set up obstacle 
 var obstacleEdge = {
@@ -120,11 +150,15 @@ function draw() {
     // placeholder player
     playerEdge.playerPositionY = playerEdge.playerPositionY + velocity;
         velocity = velocity + acceleration;
+
+        let position = Math.floor(gameFrame/staggerFrames) % spriteAnimations[playerState].loc.length; //All values turned into 0 under math.floor, 1 means reset
+        let frameX = frameWidth * position;
+        let frameY = spriteAnimations[playerState].loc[position].y;
+
             ctx.drawImage(
-        
             playerSpr, //img
-            0, //x co-ord
-            0,  //y co-ord
+            frameNo, //x co-ord on sheet
+            frameType,  //y co-ord on sheet (framepicker)
             frameWidth,
             frameHeight,
             playerEdge.playerX,
@@ -132,7 +166,7 @@ function draw() {
             playerEdge.playerWidth, 
             playerEdge.playerHeight
             );
-            
+
         // Add floor collision to player 
         if (playerEdge.playerPositionY >= positionFloor){
             velocity = 0;
@@ -155,7 +189,10 @@ function draw() {
             obstacleEdgeMic.micWidth,
             obstacleEdgeMic.micHeight
     );
+   
+    
 
+   
     // Animate obstacles            
     obstacleEdge.ampX += gameSpeed; 
     obstacleEdgeMic.micX += gameSpeed; 
@@ -204,14 +241,11 @@ function draw() {
         ctx.font = "20px Arial";
     ctx.fillStyle = "black";
     ctx.fillText(`Score: ${score}`, 10, 50);
-    ctx.fillText(`High score: ${highScore[0]}`, 100, 50);
     score++;
     } else if (gameOverState == true){
         ctx.font = "20px Arial";
         ctx.fillStyle = "black";
         ctx.fillText(`Final score: ${score}`, canvas.width/2, 50);
-        highScore.push(score);
-        highScoreSort();
     }
     
 }
@@ -229,7 +263,8 @@ function intervalLoop() {
 }
 setInterval(intervalLoop, 20);
 
-
+ //Animate player
+   
 //Collision logic 
 
     let collisionObj;

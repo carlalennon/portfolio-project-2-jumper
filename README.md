@@ -1,4 +1,15 @@
-Planning the project 
+#JaVill Stage Rage
+
+##Table of Contents
+
+
+##Planning the project 
+
+The idea for this project came from a meeting with a previous client. I have worked with this client across multiple projects, he always has fresh and out-of-the-box ideas. The client's current project is JaVill, a 5 piece band from Dublin. With loud fresh sounds and a bold colour palette, I was excited to work on anything to do with the band.
+
+![JaVill band portrait](./assets/images/javil-header-image.jpg)
+
+
 
 ======= The plan =======
 
@@ -197,3 +208,5 @@ Add a score keeper [https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_
 Add high score but it's broken (only shows 1st score)
 
 Use animation tutorials : [https://www.youtube.com/watch?v=CY0HE277IBM&list=PLYElE_rzEw_uryBrrzu2E626MY4zoXvx2&ab_channel=Frankslaboratory] and [https://spicyyoghurt.com/tutorials/html5-javascript-game-development/images-and-sprite-animations]
+
+Writing the readme support [https://github.blog/changelog/2021-04-13-table-of-contents-support-in-markdown-files/]
