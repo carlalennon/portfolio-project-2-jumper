@@ -44,6 +44,17 @@ I leaned into the 2000s Internet aesthetic and kept the site very simple. After 
 
 ![A Bayer Matrix gradient](./assets/images/site-background.png)
 
+I kept the header simple, and decided to leave the plain blue hyperlink Web 1.0 aesthetic in the past. I designed a simple header with the game's title, with a childlish font that pays homage to the early days of browser based gaming. I made the text white so that it would stand out strongly against the dark background. The brush used for the title is a pixel brush on a small canvas, with the final image rendered out in 100% scale to minimise artifacting.
+
+![The site header, the game's name in handwriting](assets/images/readme-images/readme-features-header.png)
+
+I added a plain black footer with some doodle-style representations of social media icons. In order to prompt the user to find the band on their socials, I also added a hand-written tag, asking the user to chack out the band's social media.
+
+![The footer of the site page](./assets/images//readme-images/readme-features-footer.png)
+
+I also added a media query, so that when the screen width is small enough the footer gets bigger. The text also disappears and the social media icons are centered. This is in anticipation of making the page completely mobile friendly in the future.
+
+![The small size footer of the site page](assets/images/readme-images/readme-features-footer.png)
 
 
 
@@ -251,4 +262,4 @@ Writing the readme support [https://github.blog/changelog/2021-04-13-table-of-co
 Also talk about 
 
 Aseprite 
-
+How I had to resart the project 
