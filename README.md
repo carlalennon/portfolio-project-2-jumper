@@ -73,7 +73,7 @@ After a quick sketch on a napkin of the band members as caricatures, it was deci
 
 I created some assets using a pixel art focused image editor, which I had previously used for pixel art for client work. I created a temporary character, while I wait for character design approval from the band members. 
 
-![Temporary character sprite](./assets/images/temp-sprite-002.png)
+![Temporary character sprite](./assets/images/temp-sprite.png)
 
 I also created an amplifier and microphone sprite so the character has something to jump over and duck underneath.
 
