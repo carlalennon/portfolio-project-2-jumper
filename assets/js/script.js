@@ -24,7 +24,7 @@ canvas.height= 400;
 //Set up player, variable are passed into the draw method below for scaling 
 var playerEdge = {
  playerWidth : 60,
- playerHeight : 120,
+ playerHeight : 180,
  playerX : 30,
  playerY : 360,
  playerPositionY : 60
@@ -83,7 +83,7 @@ var obstacleEdgeMic = {
 }
 
 //Collision 
-let positionFloor = 360;
+let positionFloor = 240;
 let playerOnGround;
 let collisionAmp;
 let collisionMic;
@@ -133,7 +133,7 @@ document.addEventListener("keyup", function(e)
 // jump animation 
   function playerJump() {
 
-    if (playerOnGround === true) {
+    if (playerOnGround == true) {
     velocity = -13;
     acceleration = .5;
     playerEdge.playerPositionY = playerEdge.playerPositionY + velocity*acceleration;
@@ -159,55 +159,21 @@ function draw() {
         let frameY = spriteAnimations[playerState].loc[position].y;
 
             if(upPressed!== true && downPressed !== true)
-                {
-                    ctx.drawImage(
-                    playerSpr, //img
-                    frameX, //x co-ord on sheet
-                    frameY,  //y co-ord on sheet (framepicker)
-                    frameWidth,
-                    frameHeight,
-                    playerEdge.playerX,
-                    playerEdge.playerPositionY,
-                    frameWidth, 
-                    frameHeight
-                    );
-                    gameFrame++;
-                
-                } 
-                else if (upPressed = true)
-                {
-                    frameY = 1;
-                    ctx.drawImage(
-                    playerSpr, //img
-                    frameX, //x co-ord on sheet
-                    frameY,  //y co-ord on sheet (framepicker)
-                    frameWidth,
-                    frameHeight,
-                    playerEdge.playerX,
-                    playerEdge.playerPositionY,
-                    frameWidth, 
-                    frameHeight
-                    );
-                    gameFrame++;
-                }   
-                else if (downPressed = true)
-                {
-                    frameY = 2;
-                    ctx.drawImage(
-                    playerSpr, //img
-                    frameX, //x co-ord on sheet
-                    frameY,  //y co-ord on sheet (framepicker)
-                    frameWidth,
-                    frameHeight,
-                    playerEdge.playerX,
-                    playerEdge.playerPositionY,
-                    frameWidth, 
-                    frameHeight
-                    );
-                    gameFrame++;
-                };
-        };
-    
+            {
+                ctx.drawImage(
+            playerSpr, //img
+            frameX, //x co-ord on sheet
+            frameY,  //y co-ord on sheet (framepicker)
+            frameWidth,
+            frameHeight,
+            playerEdge.playerX,
+            playerEdge.playerPositionY,
+            frameWidth, 
+            frameHeight
+            );
+
+            gameFrame++;
+                } else;
            
         // Add floor collision to player 
         if (playerEdge.playerPositionY >= positionFloor){
@@ -324,7 +290,7 @@ setInterval(intervalLoop, 20);
 
 function collision() {
     // contact with ground 
-     if (playerEdge.playerPositionY >= positionFloor) {
+     if (((playerEdge.playerPositionY) >= positionFloor)) {
         velocity = 0;
         acceleration = 0;
         playerEdge.playerPositionY=positionFloor;
