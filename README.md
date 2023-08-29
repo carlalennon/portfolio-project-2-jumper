@@ -1,13 +1,49 @@
-#JaVill Stage Rage
+# JaVill Stage Rage
 
-##Table of Contents
+## Table of Contents
 
 
-##Planning the project 
+## Planning the project 
 
 The idea for this project came from a meeting with a previous client. I have worked with this client across multiple projects, he always has fresh and out-of-the-box ideas. The client's current project is JaVill, a 5 piece band from Dublin. With loud fresh sounds and a bold colour palette, I was excited to work on anything to do with the band.
 
 ![JaVill band portrait](./assets/images/javil-header-image.jpg)
+
+The pitch for the project was this - the client wanted some sort of interactive experience on the band website. The grapics would be simple portraits of the band members in an 8-bit art style. The player would be able to choose a band member to play as, and the game play would be extremely simple. We settled on an endless jumper game, an arcade classic and something I felt I could achieve as a novice developer. 
+
+Some elements that were in the original plan were:
+* A character selector that changes the skin of the selected character to one of the band members
+* The character runs across a stage setting in front of a crowd
+* The character can jump over amplifiers and can duck underneath mounted microphones
+* A database for people to compare high scores over time
+
+Not all these elements made it in to the final build, but they are being considered as future features.
+
+## The Golden Age of Browser Games
+
+As someone who grew up with Internet access, playing games online has always interested me. The Internet served as the perfect place for people to post home-grown simple software. During the 2000s, Adobe Flash allowed amateur developers to create their own games and post them to forums such as Newgrounds or Miniclip, along with larger MMOs offering games to their users, such as Neopets and Club Penguin.
+
+These games are characterised by simple graphics, often rude humour and simple game play. The crude graphics give a lovingly home-made and authentic charm to to online games. Without the oversight of large corporations, these unsanitized and oncensored games gave player access to gaming experiences unlike anything being offered by big game companies at the time. This era also led to the massive success of "indie" game titles we see in pop culture today. 
+
+With the removal of browser support for Adobe Flash in 2021, many of these games became unplayable. This gives modern internet users a nostalgic feeling around these old, strange games that are no longer available to play. 
+
+This project taps into that nostalgia with the use of hand-dran elements, pixel graphics and simple game play. However, unlike the Flash games of old, this project is not rendered obselete with the event of Flash's removal.
+
+If you are interested, there is some further reading on this topic linked below: 
+* [How Flash Games Shaped The Video Game Industry](https://www.flashgamehistory.com/#:~:text=It%20all%20started%20in%201996,automated%20Flash%20games%20website%2C%20Newgrounds.)
+* [End of an Era: Flash Games](https://www.vancouverisawesome.com/events-and-entertainment/end-of-an-era-flash-games-3268327)
+* [Wikipedia Entry: Browser Games](https://en.wikipedia.org/wiki/Browser_game)
+* [How Flash Games Shaped Video Game History](https://www.gameinformer.com/2018/12/22/how-flash-games-changed-video-game-history)
+* [What Happened to Flash?](https://www.lifewire.com/what-happened-to-flash-2617986#:~:text=What%20to%20Know,removed%20all%20Flash%2Drelated%20software.)
+
+## The Web Page
+
+JaVill do not currently have a website to host this browser game on. I built a simple one-page site to temporarily host this game. 
+
+I leaned into the 2000s Internet aesthetic and kept the site very simple. After a sneak peek into JaVill's upcoming promotional photos, I chose some colours to match the theme and created a simple pixel gradient using the Bayer Matrix. Pixel gradients were first popularised in the clipart that was included in early Apple computers, and have a distinct feel to them, a mix of eccentric and Web 1.0. 
+
+![A Bayer Matrix gradient](./assets/images/site-background.png)
+
 
 
 
@@ -210,3 +246,9 @@ Add high score but it's broken (only shows 1st score)
 Use animation tutorials : [https://www.youtube.com/watch?v=CY0HE277IBM&list=PLYElE_rzEw_uryBrrzu2E626MY4zoXvx2&ab_channel=Frankslaboratory] and [https://spicyyoghurt.com/tutorials/html5-javascript-game-development/images-and-sprite-animations]
 
 Writing the readme support [https://github.blog/changelog/2021-04-13-table-of-contents-support-in-markdown-files/]
+[https://docs.readme.com/main/docs/linking-to-pages#:~:text=To%20link%20inline%2C%20type%20the,%2C%20%22(y)%22.&text=Reference%2Dstyle%20linking%20allows%20you,refer%20to%20it%20multiple%20times.]
+
+Also talk about 
+
+Aseprite 
+
