@@ -353,6 +353,13 @@ function resetGame() {
     score=0;
 }
 
+// Rule button 
+
+let ruleButton = document.getElementById("rule-button");
+
+function showRules(element, transparency) {
+    ruleButton.style.transparency = 0;
+}
 
 
 
