@@ -23,11 +23,19 @@ Not all these elements made it in to the final build, but they are being conside
 
 As someone who grew up with Internet access, playing games online has always interested me. The Internet served as the perfect place for people to post home-grown simple software. During the 2000s, Adobe Flash allowed amateur developers to create their own games and post them to forums such as Newgrounds or Miniclip, along with larger MMOs offering games to their users, such as Neopets and Club Penguin.
 
-These games are characterised by simple graphics, often rude humour and simple game play. The crude graphics give a lovingly home-made and authentic charm to to online games. Without the oversight of large corporations, these unsanitized and oncensored games gave player access to gaming experiences unlike anything being offered by big game companies at the time. This era also led to the massive success of "indie" game titles we see in pop culture today. 
+![Newgrounds front page](./assets/images/readme-images/early-flash-games-newgrounds.jpg)
+
+These games are characterised by simple graphics, often rude humour and simple game play. The crude graphics give a lovingly home-made and authentic charm to to online games. Without the oversight of large corporations, these unsanitized and uncensored games gave player access to gaming experiences unlike anything being offered by big game companies at the time. This era also led to the massive success of "indie" game titles we see in pop culture today.
+
+![The Impossible Quiz game screenshot](assets/images/readme-images/early-flash-games-impossible-quiz.png)
 
 With the removal of browser support for Adobe Flash in 2021, many of these games became unplayable. This gives modern internet users a nostalgic feeling around these old, strange games that are no longer available to play. 
 
+![Line Rider screen shot](assets/images/readme-images/early-flash-games-line-rider.png)
+
 This project taps into that nostalgia with the use of hand-dran elements, pixel graphics and simple game play. However, unlike the Flash games of old, this project is not rendered obselete with the event of Flash's removal.
+
+![Miniclip front page screenshot](assets/images/readme-images/early-flash-games-miniclip.jpg)
 
 If you are interested, there is some further reading on this topic linked below: 
 * [How Flash Games Shaped The Video Game Industry](https://www.flashgamehistory.com/#:~:text=It%20all%20started%20in%201996,automated%20Flash%20games%20website%2C%20Newgrounds.)
@@ -54,9 +62,61 @@ I added a plain black footer with some doodle-style representations of social me
 
 I also added a media query, so that when the screen width is small enough the footer gets bigger. The text also disappears and the social media icons are centered. This is in anticipation of making the page completely mobile friendly in the future.
 
-![The small size footer of the site page](assets/images/readme-images/readme-features-footer.png)
+![The small size footer of the site page](assets/images/readme-images/readme-features-footer-small-screen.png)
 
 
+## Styling the Game 
+
+After a quick sketch on a napkin of the band members as caricatures, it was decided the game would be in an 8-bit style. This was inspired by the infinite runner/Frogger clone "Crossy Road", a game that was popular in the early days of mobile gaming. The game uses an 8-bit style in a 3D perspective.
+
+![Crossy Road character selector](./assets/images/readme-images/early-flash-games-crossy-road.png)
+
+I created some assets using a pixel art focused image editor, which I had previously used for pixel art for client work. I created a temporary character, while I wait for character design approval from the band members. 
+
+![Temporary character sprite](./assets/images/temp-sprite-002.png)
+
+I also created an amplifier and microphone sprite so the character has something to jump over and duck underneath.
+
+![Temporary amp sprite](./assets/images/spr-obstacle-amp-temp-export.png)
+![Temporary microphone sprite](./assets/images/spr-obstacle-mic-temp.png)
+
+~Background information~ 
+
+## The Build
+
+### HTML Canvas 
+
+With the final half of my bachelor's degree focussed on Adobe Flash as an animation tool, I probably shouldn't have been so surprised when learning about the HTML canvas object for the first time. The possibilities with the canvas are truly infinite, and I have had a very fun time imagining the possibilities for this game. The canvas element is declared in HTML and populated using Javascript. 
+
+### Drawing on the Canvas
+
+The drawImage() function can take up to nine variables. It can slice the image you want to draw, and draw a slice on each frame. Once I wrapped my head around the co-ordinate system, it was easy to manipulate images using the function. 
+
+Within Unity, the sprite slice function works the same way. I have some experience with this, and it made things a little easier to place into the function and have it render out correctly.
+
+### Physics
+
+I never imagined I would actually use anything from Leaving Cert physics class after I left, but for this porject it came in handy. I originally thought of the character jump as having a maximum up, and having the player fall when the velocity reaches zero. 
+
+While looking at how to implement gravity, I came across [this tutorial](https://medium.com/codex/making-the-easiest-javascript-game-b1a0b21794b4) describing how to build a game very similar to the one I wanted to make. While disheartened, I decided not to read the whole tutorial, as I was having fun figuring out the canvas functions from existing documentation.
+
+### Obstacles
+
+Rather than creating a new obstacle each time and destroying it once it leaves the canvas, the obstacles encountered by the players are simply drawn once and moved out of frame, then reset their x-position off-canvas to the right. This means the obstacles we see are actually the same two obstacles over and over again. 
+
+I wanted the mic to spawn in at one-fifth the rate of the amp. I increased the random interval range that the mic is able to spawn in by 5. This means that, over a long enough time, the amp will spawn in at one-fifth the rate of the amp, as if has a chance of spawning five times further away. 
+
+There is an issue with this spawning method. There is a chance that a mic and amp will spawn too close together, meaning the player will have to duck and jump at the same time. In the future, I could deal with this by drawing a larger collision box around the amp. On spawning, the mic object runs a check to see if it is within this larger collision box and if so, resets it's x position. This would prevent the objects from spawning too close together. For now, the player can deal with this "impossible" gameplay issue by cheating, as described below.
+
+### Cheating 
+
+Instead of recalculating the mic as two collision boxes, one the whole size of the mic and one off the ground that the player must crouch under, I used a trick. 
+
+The player always collides with the mic, but as long as they are in the "crouch" position (the down arrow is pressed) the game will not end. 
+
+This allows some cheating, however. If the player jumps over the mic, as long as the down button is held, the game will not end. 
+
+For now, I have kept this in to deal with the mic and amp spawning together issue. 
 
 ======= The plan =======
 
@@ -71,16 +131,9 @@ Jonathan needs a game for his website. Will collect deatails over the weekend
 * Database for high scores 
 
 ==== Building the Project ======
-// From old project
-
-[ ---- Introducing JaVill----
 
 
----- Website Building -----
 
-For my interactive site page, the client did not yet have their own website. However, they showed me some promotional shots they'd taken for their upcoming release. The tones were blank and white, with a water ripple foil cast over the set in gold. I chose to build my assets in a muted colours to match the JaVill branding. 
-
-After our first conversation about this project, I drew the band members on a napkin as an example. The characters were 8-bit and 16-bit caracitures of the band members. 
 
 --- Building log ---
 First step - building the page. Went to W3 schools to freshen up on HTML basics. 
