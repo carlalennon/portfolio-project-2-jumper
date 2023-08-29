@@ -355,11 +355,11 @@ function resetGame() {
 
 // Rule button 
 
-let ruleButton = document.getElementById("rule-button");
+// let ruleButton = document.getElementById("rule-button");
 
-function showRules(element, transparency) {
-    ruleButton.style.transparency = 0;
-}
+// function showRules(element, transparency) {
+//     ruleButton.style.transparency = 
+// }
 
 
 
