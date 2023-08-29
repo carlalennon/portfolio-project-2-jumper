@@ -88,11 +88,37 @@ I also created an amplifier and microphone sprite so the character has something
 
 With the final half of my bachelor's degree focussed on Adobe Flash as an animation tool, I probably shouldn't have been so surprised when learning about the HTML canvas object for the first time. The possibilities with the canvas are truly infinite, and I have had a very fun time imagining the possibilities for this game. The canvas element is declared in HTML and populated using Javascript. 
 
+The HTML canvas was even designed with 2D animation in mind. I learned about 2D context for the canvas [here](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D). From my research, the usual name for a variable to store context is ctx. 
+
+The canvas also runs the clearRect method to wipe all old drawings off the canvas at each frame.
+
 ### Drawing on the Canvas
 
 The drawImage() function can take up to nine variables. It can slice the image you want to draw, and draw a slice on each frame. Once I wrapped my head around the co-ordinate system, it was easy to manipulate images using the function. 
 
 Within Unity, the sprite slice function works the same way. I have some experience with this, and it made things a little easier to place into the function and have it render out correctly.
+
+I used the [W3 schools documentation](https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity) to begin drawing images to the canvas. This can [also be used](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext) to set an alpha value, for example adding a background of crowd parallax in the future. The desynchronized method decouples the drawing of the canvas from the event loop, so a background could change at a different rate than a character for example.
+
+For explaining the drawing of sprite to the canvas, [this page](https://spicyyoghurt.com/tutorials/html5-javascript-game-development/setup-html5-canvas-game) was also extremely useful and explained everything clearly.
+
+Something I originally found hard to navigate was that the zero point of the x/y grid of the canvas is in the top left corner, as opposed to in the middle as I am used to working with.
+
+### Animation
+
+As with gameplay animation in the C# based Unity, the use of (+=) featured heavily in this project. 
+
+For sprite slicing, I referenced [here](https://spicyyoghurt.com/tutorials/html5-javascript-game-development/images-and-sprite-animations).
+
+### Game Controllers
+
+I looked at some ideas for player controls [here](https://www.w3schools.com/graphics/game_controllers.asp). I looked at the [Unity documentation](https://docs.unity3d.com/ScriptReference/KeyCode.DownArrow.html) to relate the Javascript project to a format I already was familiar with. I also learned more about [key handling events here](https://www.tutorialspoint.com/detecting-arrow-key-presses-in-javascript#:~:text=onkeydown%20JavaScript%20event%20handler%20by%20passing%20arrow%20key%20unique%20codes.&text=When%20the%20script%20executed%2C%20it,an%20alert%20%E2%80%9Cdown%20key%E2%80%9D) and looked at the [W3 schools page](https://www.w3schools.com/jsref/event_onkeypress.asp) on onkeypress event. I also looked into general [keyboard events](https://www.javascripttutorial.net/javascript-dom/javascript-keyboard-events/).
+
+It's worth noting that the W3 schools tutorial on canvas games recommends the .keyCode method, but this is no longer suitable as it is deprecated. The more suitable method is .key.
+
+I went through a few iterations of player controls, including a switch statement. Eventually I settled on event listeners from both keyup and keydown.
+
+Eventually I would like to add WASD control. In my research, I also found out that the canvas can [support touch screen controls(https://www.w3schools.com/graphics/game_controllers.asp)], so that would be something to look into as well in order to make the game playable on mobile.
 
 ### Physics
 
@@ -108,6 +134,12 @@ I wanted the mic to spawn in at one-fifth the rate of the amp. I increased the r
 
 There is an issue with this spawning method. There is a chance that a mic and amp will spawn too close together, meaning the player will have to duck and jump at the same time. In the future, I could deal with this by drawing a larger collision box around the amp. On spawning, the mic object runs a check to see if it is within this larger collision box and if so, resets it's x position. This would prevent the objects from spawning too close together. For now, the player can deal with this "impossible" gameplay issue by cheating, as described below.
 
+### Bitmap Graphics
+
+There are certain scaling issues to be considered when resizing the canvas and making it responsive. It is important to keep the [width and height at a constant ratio](https://www.w3schools.com/jsref/canvas_drawimage.asp#:~:text=The%20drawImage()%20method%20draws,increase%2Freduce%20the%20image%20size.) to stop the image from warping.
+
+You can also control the image size from [within the drawImage function](https://www.w3schools.com/jsref/canvas_drawimage.asp#:~:text=The%20drawImage()%20method%20draws,increase%2Freduce%20the%20image%20size.).
+
 ### Cheating 
 
 Instead of recalculating the mic as two collision boxes, one the whole size of the mic and one off the ground that the player must crouch under, I used a trick. 
@@ -118,69 +150,8 @@ This allows some cheating, however. If the player jumps over the mic, as long as
 
 For now, I have kept this in to deal with the mic and amp spawning together issue. 
 
-======= The plan =======
-
-Jonathan needs a game for his website. Will collect deatails over the weekend
 
 
-* A classic infinite run n jumper
-* Character selector - select from pixel art of the four band mates
-* They get bigger when selected
-* The character runs a stage
-* Jump to clear amps, crouch to clear mics on a stand
-* Database for high scores 
-
-==== Building the Project ======
-
-
-
-
---- Building log ---
-First step - building the page. Went to W3 schools to freshen up on HTML basics. 
-Built out the meta details in the header
-Added twitter card for the band to share their game 
-Plan for game, based on previous Unity build, div for game window, character div, obstacles are divs too 
-It was at this point I found a site telling me how to build the game I wanted :( I'll have to build on what it says [https://medium.com/codex/making-the-easiest-javascript-game-b1a0b21794b4]
-I have decided not to read the whole tutorial. For now.
-
-Took a new route, drawing elements of the game using JS [https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity]
-JS has a gravity function? Great news
-JS character movement uses some of the same principles of c# character movement that I have already learned ( += )
-
-Drawing the canvas: 
-When using HTML like this, the drawn box is referred to as the "canvas", the same as when using Adobe Flash in college. The canvas also uses something called "context" [https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D] denoted as ctx in the JS file.
-The context can be set to 2D to allow the program to draw on the canvas. [https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext]. This can be useed to set an alpha value, for example adding a background of crowd paralax in the future. The desynchronized method decouples the drawing of the canvas from the event loop, so a background could change at a dufferent rate than a character for example.
-I want my game to be full screen and responsive. When drawing the canvas at game start, I am unsing the innerWidth/innerHeight methods
-
-Sprite not drawing, getting this error:Uncaught TypeError: Cannot read properties of undefined (reading 'drawImage')
-    at window.onload (script.js:12:13)
-
-Clearing the board: 
-As I intend for the obstacles to be somewhat randomly generated, the clear method clears everything within the borders of the canvas using clearRect ]
-
-Started new project 
-
-Started again from scratch. Drawing the image [https://spicyyoghurt.com/tutorials/html5-javascript-game-development/images-and-sprite-animations][https://spicyyoghurt.com/tutorials/html5-javascript-game-development/setup-html5-canvas-game] 
-
-Note for sprite animation: JS can silce and play sprites like Unity : [https://spicyyoghurt.com/tutorials/html5-javascript-game-development/images-and-sprite-animations]
-
-The canvas is alway drawn from the upper left corner, and the positional co ords are relative to this. +x +y only
-
-Project got easier after initial reading on canvases, as adding player controlis largely the same as unsing the c# unity intergraitions, whoch I leanred before for a pixel art job for a client 
-
-Relied heavily on the Web3 schools documentation on JS games to learn about canvas + component building [https://www.w3schools.com/graphics/game_controllers.asp] this isn't the right link
-
-Keydown events from Unity [https://docs.unity3d.com/ScriptReference/KeyCode.DownArrow.html][https://www.tutorialspoint.com/detecting-arrow-key-presses-in-javascript#:~:text=onkeydown%20JavaScript%20event%20handler%20by%20passing%20arrow%20key%20unique%20codes.&text=When%20the%20script%20executed%2C%20it,an%20alert%20%E2%80%9Cdown%20key%E2%80%9D.][https://www.w3schools.com/jsref/event_onkeypress.asp``]
-
-Web3Schools recommends .keyCode method, but this is deprecated. The more suitable method is .key 
-
-Right baout here is where the documentation for the type of jump I want in my game isn't inthe documentation, so I have to experiment
-
-Looked into managing bitmap scaling re responsivness, added constant w/h 
-
-[https://www.javascripttutorial.net/javascript-dom/javascript-keyboard-events/]
-
-[https://www.w3schools.com/jsref/canvas_drawimage.asp#:~:text=The%20drawImage()%20method%20draws,increase%2Freduce%20the%20image%20size.]
 #
 # To do List 
 ## Good
@@ -193,7 +164,7 @@ Looked into managing bitmap scaling re responsivness, added constant w/h
 ## Best
 * Add tab icon in HTML header
 * Add more social media cards to header
-* Add touch screen control [https://www.w3schools.com/graphics/game_controllers.asp]
+* Add touch screen control []
 
 
 Sources:
