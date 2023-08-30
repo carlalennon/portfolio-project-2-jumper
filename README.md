@@ -222,6 +222,8 @@ For now, I have kept this in to deal with the mic and amp spawning together issu
 
 ### Future Features 
 
+I didn't have the time to add everything I wanted. The game is imperfect, but it works.
+
 * Touch screen controls
 * High score database
 * Different character skins
@@ -246,23 +248,3 @@ I did a lot of reading during this project, some of these pages cannot fit into 
 * [Readme.com article Markdown Formatting](https://docs.readme.com/main/docs/linking-to-pages#:~:text=To%20link%20inline%2C%20type%20the,%2C%20%22(y)%22.&text=Reference%2Dstyle%20linking%20allows%20you,refer%20to%20it%20multiple%20times.)
 
 
-[][]
-
-
-# To do List 
-## Good
-* "How to Play" div
-* Use scaleRatio to make things scalable
-
-## Better
-* Parallax BG
-* Some osrt of time flooring/delta time (24fps)
-## Best
-* Add tab icon in HTML header
-
-* Add touch screen control []
-
-Also talk about 
-
-Aseprite 
-How I had to resart the project 
