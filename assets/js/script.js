@@ -17,6 +17,9 @@ sprMic.src = "./assets/images/spr-obstacle-mic.png";
 const gameOverSprite = new Image();
 gameOverSprite.src = "./assets/images/game-over=screen-temp.png";
 
+const playerSprJump = new Image();
+playerSprJump.src = "./assets/images/spr-player-jump.png"
+
 // overrides default canvas w/h
 canvas.width = 800;
 canvas.height= 400;
@@ -50,7 +53,7 @@ animations = [
 
     {
         name: "jump",
-        frames:2,
+        frames:1,
     }
 ];
 animations.forEach((state, index) => {
@@ -158,7 +161,7 @@ function draw() {
         let frameX = frameWidth * position;
         let frameY = spriteAnimations[playerState].loc[position].y;
 
-            if(upPressed!== true && downPressed !== true)
+            if((upPressed!== true && downPressed !== true) && playerOnGround == true)
             {
                 ctx.drawImage(
             playerSpr, //img
@@ -173,7 +176,39 @@ function draw() {
             );
 
             gameFrame++;
-                } else;
+                } else if
+                (upPressed == true || upPressed !== true|| playerEdge.playerY < positionFloor)
+                {
+                    if (velocity < 0 ){ 
+
+                    ctx.drawImage(
+                        playerSprJump, //img
+                        0, //x co-ord on sheet
+                        0,  //y co-ord on sheet (framepicker)
+                        frameWidth,
+                        frameHeight,
+                        playerEdge.playerX,
+                        playerEdge.playerPositionY,
+                        frameWidth, 
+                        frameHeight
+                    );
+                                    }
+                                    else if (velocity >= 0 || playerOnGround == false)
+                                    {
+                                        ctx.drawImage(
+                                            playerSprJump, //img
+                                            60, //x co-ord on sheet
+                                            0,  //y co-ord on sheet (framepicker)
+                                            frameWidth,
+                                            frameHeight,
+                                            playerEdge.playerX,
+                                            playerEdge.playerPositionY,
+                                            frameWidth, 
+                                            frameHeight
+                                        );   
+                                    }
+                
+                };
            
         // Add floor collision to player 
         if (playerEdge.playerPositionY >= positionFloor){
