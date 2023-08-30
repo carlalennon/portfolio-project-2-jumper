@@ -83,7 +83,7 @@ animations.forEach((state, index) => {
 
     spriteAnimations[state.name] = frames;
 });
-console.log(animations);
+
 
 //Set up obstacle 
 var obstacleEdge = {
