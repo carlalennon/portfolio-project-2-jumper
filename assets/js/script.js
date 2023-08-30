@@ -20,6 +20,9 @@ gameOverSprite.src = "./assets/images/game-over=screen-temp.png";
 const playerSprJump = new Image();
 playerSprJump.src = "./assets/images/spr-player-jump.png"
 
+const playerSprCrouch = new Image();
+playerSprCrouch.src = "./assets/images/spr-player-crouch.png"
+
 // overrides default canvas w/h
 canvas.width = 800;
 canvas.height= 400;
@@ -48,7 +51,7 @@ let playerState = "run";
 animations = [
     {
      name: "run",
-     frames:5,
+     frames:6,
     },
 
     {
@@ -160,54 +163,66 @@ function draw() {
         let position = Math.floor(gameFrame/staggerFrames) % spriteAnimations[playerState].loc.length; //All values turned into 0 under math.floor, 1 means reset
         let frameX = frameWidth * position;
         let frameY = spriteAnimations[playerState].loc[position].y;
-
-            if((upPressed!== true && downPressed !== true) && playerOnGround == true)
-            {
+       
+             if (downPressed == true)
+                { 
                 ctx.drawImage(
-            playerSpr, //img
-            frameX, //x co-ord on sheet
-            frameY,  //y co-ord on sheet (framepicker)
-            frameWidth,
-            frameHeight,
-            playerEdge.playerX,
-            playerEdge.playerPositionY,
-            frameWidth, 
-            frameHeight
-            );
-
-            gameFrame++;
+                playerSprCrouch, //img
+                0, //x co-ord on sheet
+                0,  //y co-ord on sheet (framepicker)
+                frameWidth,
+                frameHeight,
+                playerEdge.playerX,
+                playerEdge.playerPositionY,
+                frameWidth, 
+                frameHeight
+                );
                 } else if
-                (upPressed == true || upPressed !== true|| playerEdge.playerY < positionFloor)
+                (playerEdge.playerPositionY<(positionFloor))
                 {
                     if (velocity < 0 ){ 
 
-                    ctx.drawImage(
-                        playerSprJump, //img
-                        0, //x co-ord on sheet
-                        0,  //y co-ord on sheet (framepicker)
-                        frameWidth,
-                        frameHeight,
-                        playerEdge.playerX,
-                        playerEdge.playerPositionY,
-                        frameWidth, 
-                        frameHeight
+                ctx.drawImage(
+                playerSprJump, //img
+                0, //x co-ord on sheet
+                0,  //y co-ord on sheet (framepicker)
+                frameWidth,
+                frameHeight,
+                playerEdge.playerX,
+                playerEdge.playerPositionY,
+                frameWidth, 
+                frameHeight
                     );
-                                    }
-                                    else if (velocity >= 0 || playerOnGround == false)
-                                    {
-                                        ctx.drawImage(
-                                            playerSprJump, //img
-                                            60, //x co-ord on sheet
-                                            0,  //y co-ord on sheet (framepicker)
-                                            frameWidth,
-                                            frameHeight,
-                                            playerEdge.playerX,
-                                            playerEdge.playerPositionY,
-                                            frameWidth, 
-                                            frameHeight
-                                        );   
-                                    }
-                
+                    }
+                    else if (velocity >= 0 || playerOnGround == false)
+                    {
+                ctx.drawImage(
+                playerSprJump, //img
+                60, //x co-ord on sheet
+                0,  //y co-ord on sheet (framepicker)
+                frameWidth,
+                frameHeight,
+                playerEdge.playerX,
+                playerEdge.playerPositionY,
+                frameWidth, 
+                frameHeight
+                    );   
+                    }  
+                } else if 
+                (playerOnGround == true && upPressed == false && downPressed == false)
+                {
+                    ctx.drawImage(
+                    playerSpr, //img
+                    frameX, //x co-ord on sheet
+                    frameY,  //y co-ord on sheet (framepicker)
+                    frameWidth,
+                    frameHeight,
+                    playerEdge.playerX,
+                    playerEdge.playerPositionY,
+                    frameWidth, 
+                    frameHeight
+                    );
+                     gameFrame++;
                 };
            
         // Add floor collision to player 
@@ -376,9 +391,9 @@ function resetGame() {
     gameOverState = false; 
     //reset player
     playerEdge.playerWidth = 60;
-    playerEdge.playerHeight = 120;
-    playerEdge.playerX = 20;
-    playerEdge.playerY = 160;
+    playerEdge.playerHeight = 180;
+    playerEdge.playerX = 30;
+    playerEdge.playerY = 360;
     playerEdge.playerPositionY = 60;
 
     //reset obstacles
