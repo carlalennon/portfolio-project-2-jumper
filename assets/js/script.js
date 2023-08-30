@@ -9,13 +9,13 @@ const playerSpr = new Image();
 playerSpr.src = "./assets/images/spr-player-anim-temp-sheet-750.png";
 
 const sprAmp = new Image();
-sprAmp.src = "./assets/images/spr-obstacle-amp-temp.png";
+sprAmp.src = "./assets/images/spr-obstacle-amp.png";
 
 const sprMic = new Image();
 sprMic.src = "./assets/images/spr-obstacle-mic.png";
 
 const gameOverSprite = new Image();
-gameOverSprite.src = "./assets/images/game-over=screen-temp.png";
+gameOverSprite.src = "./assets/images/spr-game-over.png";
 
 const playerSprJump = new Image();
 playerSprJump.src = "./assets/images/spr-player-jump.png"
@@ -288,12 +288,6 @@ function draw() {
                 console.log("Collide Mic");
             }
 
-    // Draw floor line 
-        ctx.beginPath();
-        ctx.moveTo(0, positionFloor);
-        ctx.lineTo(canvas.width, positionFloor);
-        ctx.stroke();
-
     // Game over screen 
      
     if (gameOverState == true){
@@ -315,13 +309,13 @@ function draw() {
     ctx.fillText(`Score: ${score}`, 10, 50);
     score++;
     } else if (gameOverState == true){
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "black";
+        ctx.font = "40px Arial";
+        ctx.fillStyle = "white";
         ctx.fillText(`Final score: ${score}`, canvas.width/2, 50);
     }
 
     //Draw background 
-
+    if (gameOverState == false){
     ctx.drawImage(
         bg004,
         bgX,
@@ -347,7 +341,7 @@ function draw() {
             if (bgX2 <= -800){
                 bgX2 = 800;
             };
-       
+        };
     
 
 }
