@@ -1,6 +1,5 @@
 
 // set up Canvas 
-
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -35,11 +34,10 @@ bg003.src = "./assets/images/spr-midground.png";
 const bg004 = new Image();
 bg004.src = "./assets/images/spr-foreground.png";
 
-// overrides default canvas w/h
 canvas.width = 800;
 canvas.height= 400;
 
-//Set up player, variable are passed into the draw method below for scaling 
+//Set up player
 var playerEdge = {
  playerWidth : 60,
  playerHeight : 180,
@@ -112,8 +110,8 @@ var acceleration = 0.5;
 let gameSpeed = -5;
 
 // Player controls 
-let upPressed = false;  // Stores if up key has been pressed 
-let downPressed = false; // Store if down key has been pressed 
+let upPressed = false;  
+let downPressed = false;
 
 //Game over handling 
 let gameOverState = false;
@@ -165,13 +163,11 @@ document.addEventListener("keyup", function(e)
     } 
   }
 
-
 // Interval for obstacles 
     function randomDistance(min, max) {
         return Math.random()*(max-min) + min;
     }
     
-
 function draw() {
     // placeholder player
     playerEdge.playerPositionY = playerEdge.playerPositionY + velocity;
@@ -287,9 +283,7 @@ function draw() {
             if (collisionMic === true) {
                 console.log("Collide Mic");
             }
-
-    // Game over screen 
-     
+    // Game over screen      
     if (gameOverState == true){
         ctx.drawImage(
             gameOverSprite,
@@ -299,9 +293,6 @@ function draw() {
             canvas.height
         );
     }
-
-    // Score 
-   
 
     if (gameOverState == false){
         ctx.font = "20px Arial";
@@ -313,7 +304,6 @@ function draw() {
         ctx.fillStyle = "white";
         ctx.fillText(`Final score: ${score}`, canvas.width/2, 50);
     }
-
     //Draw background 
     if (gameOverState == false){
     ctx.drawImage(
@@ -346,38 +336,15 @@ function draw() {
 
 }
 
-// "loop", interval, frames 
 function intervalLoop() {
     collision();
-    //Render
     ctx.clearRect(0,0,canvas.width, canvas.height);
     draw();
     gameOver();
     //Game gets faster over time 
-    gameSpeed -= 0.0005;   
-    
+    gameSpeed -= 0.0005;     
 }
 setInterval(intervalLoop, 20);
-
- //Animate player
-   
-//Collision logic 
-
-    let collisionObj;
-
-    // obstacle collision 
-    let objLeft = this.ampX;
-    let objRight = this.ampX + (this.ampWidth);
-    let objTop = this.ampY;
-    let objBottom = this.ampY + (this.ampHeight);
-
-    // Add collision box to player 
-    let playerLeft = this.playerX;
-    let playerRight = this.playerX + (this.playerWidth);
-    let playerTop = this.playerY;
-    let playerBottom = this.playerY + (this.playerHeight);
-
-
 
 function collision() {
     // contact with ground 
@@ -449,23 +416,4 @@ function resetGame() {
     score=0;
 }
 
-// Rule button 
-
-// let ruleButton = document.getElementById("rule-button");
-
-// function showRules(element, transparency) {
-//     ruleButton.style.transparency = 
-// }
-
-
-
-// Physics
-
-// Position equation = p(n+1) = v*t + p(n)
-// where p=position(x,y), v=velocity, t=time(milliseconds, intervalLoop)
-
-// Velocity equation = v(n+1) = a*t + v(n)
-
-// Obstacle collider 
-// if the player edge is within the obstacle it's a collide 
-// use arithmic operators  
+ 
