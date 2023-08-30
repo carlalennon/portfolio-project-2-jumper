@@ -225,7 +225,7 @@ For now, I have kept this in to deal with the mic and amp spawning together issu
 * Touch screen controls
 * High score database
 * Different character skins
-* 
+* Add parallax background
 
 ### Citations
 
