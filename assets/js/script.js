@@ -23,6 +23,18 @@ playerSprJump.src = "./assets/images/spr-player-jump.png"
 const playerSprCrouch = new Image();
 playerSprCrouch.src = "./assets/images/spr-player-crouch.png"
 
+const bg001 = new Image();
+bg001.src = "./assets/images/spr--background.png"
+
+const bg002 = new Image();
+bg002.src = "./assets/images/spr-midground-background.png"
+
+const bg003 = new Image();
+bg003.src = "./assets/images/spr-midground.png"
+
+const bg004 = new Image();
+bg004.src = "./assets/images/spr-foreground.png"
+
 // overrides default canvas w/h
 canvas.width = 800;
 canvas.height= 400;
