@@ -236,6 +236,11 @@ The site passed the W3 Schools HTML test with no issues
 
 ![W3 Schools results](./assets/images/testing-w3.png)
 
+## Deployment Procedure 
+
+The repo can be accessed [here](https://github.com/carlalennon/portfolio-project-2.1).
+
+The page is deployed via Github Pages and can be accessed [here](https://carlalennon.github.io/portfolio-project-2.1/).
 ## Future Features 
 
 I didn't have the time to add everything I wanted. The game is imperfect, but it works.
