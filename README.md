@@ -1,5 +1,7 @@
 # JaVill Stage Rage
 
+![Mockup of game](./assets/images/testing-mockup.png)
+
 ## Planning the project 
 
 The idea for this project came from a meeting with a previous client. I have worked with this client across multiple projects, he always has fresh and out-of-the-box ideas. The client's current project is JaVill, a 5 piece band from Dublin. With loud fresh sounds and a bold colour palette, I was excited to work on anything to do with the band.
@@ -220,7 +222,21 @@ This allows some cheating, however. If the player jumps over the mic, as long as
 
 For now, I have kept this in to deal with the mic and amp spawning together issue. 
 
-### Future Features 
+## Testing
+
+The site passed on Jshint with minimal issues 
+
+![Jshint results](./assets/images/testing-jshint.png)
+
+The site passed on Jigsaw with no issues
+
+![Jigwas results](./assets/images/testing-css.png)
+
+The site passed the W3 Schools HTML test with no issues 
+
+![W3 Schools results](./assets/images/testing-w3.png)
+
+## Future Features 
 
 I didn't have the time to add everything I wanted. The game is imperfect, but it works.
 
@@ -229,7 +245,7 @@ I didn't have the time to add everything I wanted. The game is imperfect, but it
 * Different character skins
 * Add parallax background
 
-### Citations
+## Citations
 
 I did a lot of reading during this project, some of these pages cannot fit into the text above. I have cited them below. 
 * [Mozilla Add Event Listener Guide](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
