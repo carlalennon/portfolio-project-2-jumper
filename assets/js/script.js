@@ -120,6 +120,11 @@ let gameOverState = false;
 let score = 0; 
 let highScore= [0];
 
+// Background
+
+let bgX = 800;
+let bgX2 = 0;
+
 document.addEventListener("keydown", function(e)  
 {
     if (e.key == "ArrowUp"){
@@ -314,7 +319,37 @@ function draw() {
         ctx.fillStyle = "black";
         ctx.fillText(`Final score: ${score}`, canvas.width/2, 50);
     }
+
+    //Draw background 
+
+    ctx.drawImage(
+        bg004,
+        bgX,
+        40,
+        canvas.width,
+        canvas.height
+        )
+        bgX += gameSpeed;
+
+        if (bgX <= -800){
+            bgX = 800;
+        };
+
+        ctx.drawImage(
+            bg004,
+            bgX2,
+            40,
+            canvas.width,
+            canvas.height
+            )
+            bgX2 += gameSpeed;
     
+            if (bgX2 <= -800){
+                bgX2 = 800;
+            };
+       
+    
+
 }
 
 // "loop", interval, frames 
