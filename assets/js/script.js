@@ -18,22 +18,22 @@ const gameOverSprite = new Image();
 gameOverSprite.src = "./assets/images/spr-game-over.png";
 
 const playerSprJump = new Image();
-playerSprJump.src = "./assets/images/spr-player-jump.png"
+playerSprJump.src = "./assets/images/spr-player-jump.png";
 
 const playerSprCrouch = new Image();
-playerSprCrouch.src = "./assets/images/spr-player-crouch.png"
+playerSprCrouch.src = "./assets/images/spr-player-crouch.png";
 
 const bg001 = new Image();
-bg001.src = "./assets/images/spr--background.png"
+bg001.src = "./assets/images/spr--background.png";
 
 const bg002 = new Image();
-bg002.src = "./assets/images/spr-midground-background.png"
+bg002.src = "./assets/images/spr-midground-background.png";
 
 const bg003 = new Image();
-bg003.src = "./assets/images/spr-midground.png"
+bg003.src = "./assets/images/spr-midground.png";
 
 const bg004 = new Image();
-bg004.src = "./assets/images/spr-foreground.png"
+bg004.src = "./assets/images/spr-foreground.png";
 
 // overrides default canvas w/h
 canvas.width = 800;
@@ -46,7 +46,7 @@ var playerEdge = {
  playerX : 30,
  playerY : 360,
  playerPositionY : 60
-}
+};
 
 // Animation handling from Frank's Lab -- See ReadMe
 const frameWidth = 60; // Sprite sheet slicing
@@ -74,7 +74,7 @@ animations = [
 animations.forEach((state, index) => {
     let frames = {
         loc: [],
-    }
+    };
     for (let j=0; j <state.frames; j++){
         let positionX = j*frameWidth;
         let positionY = index*frameHeight;
@@ -91,14 +91,14 @@ var obstacleEdge = {
     ampHeight : 60,
     ampX : 1000,
     ampY : 300
-}
+};
 
 var obstacleEdgeMic = {
     micWidth : 60,
     micHeight : 120,
     micX : 1200,
     micY : 240
-}
+};
 
 //Collision 
 let positionFloor = 240;
@@ -108,7 +108,7 @@ let collisionMic;
 
 // Physics 
 let velocity = 0;
-var acceleration = .5; 
+var acceleration = 0.5; 
 let gameSpeed = -5;
 
 // Player controls 
@@ -158,7 +158,7 @@ document.addEventListener("keyup", function(e)
 
     if (playerOnGround == true) {
     velocity = -13;
-    acceleration = .5;
+    acceleration = 0.5;
     playerEdge.playerPositionY = playerEdge.playerPositionY + velocity*acceleration;
     } else {
         return;
@@ -240,7 +240,7 @@ function draw() {
                     frameHeight
                     );
                      gameFrame++;
-                };
+                }
            
         // Add floor collision to player 
         if (playerEdge.playerPositionY >= positionFloor){
@@ -322,12 +322,12 @@ function draw() {
         40,
         canvas.width,
         canvas.height
-        )
+        );
         bgX += gameSpeed;
 
         if (bgX <= -800){
             bgX = 800;
-        };
+        }
 
         ctx.drawImage(
             bg004,
@@ -335,13 +335,13 @@ function draw() {
             40,
             canvas.width,
             canvas.height
-            )
+            );
             bgX2 += gameSpeed;
     
             if (bgX2 <= -800){
                 bgX2 = 800;
-            };
-        };
+            }
+        }
     
 
 }
@@ -354,7 +354,7 @@ function intervalLoop() {
     draw();
     gameOver();
     //Game gets faster over time 
-    gameSpeed -= .0005;   
+    gameSpeed -= 0.0005;   
     
 }
 setInterval(intervalLoop, 20);
@@ -444,7 +444,7 @@ function resetGame() {
     // reset game speed 
     gameSpeed = -5;
     velocity = 0;
-    acceleration = .5; 
+    acceleration = 0.5; 
 
     score=0;
 }
